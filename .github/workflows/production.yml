@@ -1,4 +1,4 @@
-name: Deploy Production
+name: Deploy Production (placeholder)
 
 on:
   push:
@@ -7,11 +7,11 @@ on:
 
 jobs:
   deploy:
-    environment: production
-
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - run: echo "Deploying to production"
+      - run: |
+          echo "Production deployment placeholder: no deployment steps are configured yet"
+    
