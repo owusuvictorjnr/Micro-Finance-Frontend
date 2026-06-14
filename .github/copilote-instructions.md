@@ -1,8 +1,13 @@
-# Prooject Rules
 
+# Project Overview
 
-This is a financial application.
+This is a financial management application for a Susu/Microfinance institution.
 
+Code quality and security are critical.
+
+---
+
+# TypeScript Rules
 
 Never use:
 
@@ -10,38 +15,78 @@ Never use:
 - @ts-ignore
 - @ts-nocheck
 
+Always:
+
+- Use strict typing
+- Use interfaces/types
+- Use Zod validation
+
+---
+
+# Security Rules
 
 Always:
 
-- use Zod validation
-- use strick typing
-- use Prisma types
-- use Server Actions
-- sanitize user inputs
+- Validate all inputs
+- Sanitize user input
+- Protect against XSS
+- Protect against CSRF
+- Use RBAC
 
+Never:
 
-Authentication:
+- Trust client-side data
+- Expose secrets
+- Hardcode credentials
 
-- RBAC required
-- JWT verification required
-- permission checks reqiured
+---
 
+# Database Rules
 
-Database:
+All financial operations must use database transactions.
 
-- use transactions where money is involved
-- never trust client input
+Always maintain audit logs.
 
+Never update balances directly without transaction safety.
 
-Code Quality:
+---
 
-- avoid duplicate  logic
-- prefer reusable services
-- maintain feature-first architecture
+# Architecture Rules
 
+Use Feature-First Architecture.
 
-Security:
+Features belong in:
 
-- prevent XSS
-- prevent SQL injection
-- prevent CSRF
+src/features/
+
+Shared UI belongs in:
+
+src/components/ui
+
+Business logic belongs in:
+
+services/
+
+Validation belongs in:
+
+schemas/
+
+---
+
+# Code Quality
+
+Prefer:
+
+- reusable code
+- composable hooks
+- server actions
+
+Avoid:
+
+- duplicate logic
+- large components
+- large files
+
+Maximum file size:
+
+500 lines
