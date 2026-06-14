@@ -12,7 +12,7 @@ Describe what was changed.
 - [ ] Tests pass
 - [ ] Security considerations reviewed
 - [ ] No hardcoded secrets
-- [ ] No use of any
+- [ ] No use of `any`
 - [ ] No @ts-ignore
 - [ ] Documentation updated
 
