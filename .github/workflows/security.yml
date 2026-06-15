@@ -2,8 +2,13 @@ name: Security Scan
 
 on:
   pull_request:
+    branches:
+      - staging
+      - production
   push:
-
+    branches:
+      - staging
+      - production
 jobs:
   codeql:
     runs-on: ubuntu-latest
