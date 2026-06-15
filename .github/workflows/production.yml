@@ -1,0 +1,14 @@
+name: Deploy Production (placeholder)
+
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+          echo "Production deployment placeholder: no deployment steps are configured yet"
+    
