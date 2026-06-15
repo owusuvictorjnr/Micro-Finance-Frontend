@@ -64,11 +64,11 @@ src/components/ui
 
 Business logic belongs in:
 
-services/
+src/features/<feature>/services/
 
 Validation belongs in:
 
-schemas/
+src/features/<feature>/schemas/
 
 ---
 
