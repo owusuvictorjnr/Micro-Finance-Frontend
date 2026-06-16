@@ -30,14 +30,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        // Here we would perform a check session API call
-        // Mocking an authenticated session by default (Admin)
-        setUser({
-          name: "John Doe",
-          email: "john.doe@loanprox.com",
-          role: "admin",
-          avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100",
-        });
+        // TODO: replace with real session check
+        if (process.env.NODE_ENV === "development") {
+          // Mocking an authenticated session for local UI development
+          setUser({
+            name: "John Doe",
+            email: "john.doe@loanprox.com",
+            role: "admin",
+            avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100",
+          });
+        } else {
+          setUser(null);
+        }
       } catch (error) {
         console.error("Auth initialization failed:", error);
       } finally {
