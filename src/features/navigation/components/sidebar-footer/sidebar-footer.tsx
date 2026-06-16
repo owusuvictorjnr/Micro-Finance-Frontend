@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { LogOut, ChevronDown, Settings, Sliders } from "lucide-react";
 import { useAuth } from "@/providers/auth-provider";
 
@@ -40,21 +41,21 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
 
   const menuOptions = (
     <>
-      <button
-        onClick={() => console.log("Navigate to profile")}
+      <Link
+        href="/profile"
         className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-50 transition-colors"
       >
         <Settings className="h-4 w-4 text-zinc-400" />
         <span>My Profile</span>
-      </button>
+      </Link>
       
-      <button
-        onClick={() => console.log("Navigate to preferences")}
+      <Link
+        href="/settings"
         className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-50 transition-colors"
       >
         <Sliders className="h-4 w-4 text-zinc-400" />
         <span>Preferences</span>
-      </button>
+      </Link>
 
       <div className="my-1 border-t border-zinc-200/50 dark:border-zinc-800/50" />
 
