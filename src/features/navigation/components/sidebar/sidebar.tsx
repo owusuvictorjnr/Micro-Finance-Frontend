@@ -61,6 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
             <input
               type="text"
               placeholder="Search menu..."
+              aria-label="Search menu"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full rounded-lg border border-zinc-200 bg-zinc-50/50 py-1.5 pl-9 pr-4 text-xs text-zinc-900 outline-none transition-all duration-200 placeholder:text-zinc-400 hover:bg-zinc-50 focus:border-zinc-400 focus:bg-white dark:border-zinc-800/60 dark:bg-[#1E2538]/30 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:hover:bg-zinc-900/50 dark:focus:border-zinc-700 dark:focus:bg-zinc-900"
