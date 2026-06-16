@@ -50,7 +50,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
 
           <div className="flex items-center gap-4">
             {/* Premium Role Toggler (Dev/Admin Tool) */}
-            {user && (
+            {process.env.NODE_ENV === "development" && user && (
               <button
                 onClick={toggleRole}
                 title="Click to toggle user role for testing"
@@ -66,7 +66,10 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
             )}
 
             {/* Notification Badge Icon */}
-            <button className="relative rounded-full p-1.5 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 transition-colors">
+            <button
+              aria-label="Notifications"
+              className="relative rounded-full p-1.5 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 transition-colors"
+            >
               <Bell className="h-5 w-5" />
               <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-600 ring-2 ring-white dark:ring-black" />
             </button>
