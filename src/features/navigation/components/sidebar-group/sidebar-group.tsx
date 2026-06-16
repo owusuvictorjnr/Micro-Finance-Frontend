@@ -1,14 +1,27 @@
-// Copyright 2026 vitech
-// 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     https://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+import React from "react";
+import SidebarItem from "../sidebar-item";
+import { NavigationGroup } from "../../types/navigation.types";
 
+interface SidebarGroupProps {
+  group: NavigationGroup;
+  isCollapsed?: boolean;
+}
+
+const SidebarGroup: React.FC<SidebarGroupProps> = ({ group, isCollapsed = false }) => {
+  return (
+    <div className="flex flex-col gap-1">
+      {group.title && !isCollapsed && (
+        <span className="px-3.5 text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+          {group.title}
+        </span>
+      )}
+      <div className={`flex flex-col gap-0.5 ${isCollapsed ? "mt-0" : "mt-1.5"}`}>
+        {group.items.map((item) => (
+          <SidebarItem key={item.title} item={item} isCollapsed={isCollapsed} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default SidebarGroup;
