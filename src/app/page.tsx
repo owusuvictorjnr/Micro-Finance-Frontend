@@ -212,7 +212,7 @@ function DashboardContent() {
                   </button>
                 </div>
 
-                <div className="flex items-center justify-between rounded-lg border border-zinc-150 p-3 dark:border-zinc-800">
+                <div className="flex items-center justify-between rounded-lg border border-zinc-200 p-3 dark:border-zinc-800">
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4 text-zinc-500" />
                     <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
@@ -239,7 +239,7 @@ function DashboardContent() {
             )}
           </div>
 
-          <div className="mt-6 border-t border-zinc-150 pt-4 dark:border-zinc-800">
+          <div className="mt-6 border-t border-zinc-200 pt-4 dark:border-zinc-800">
             <div className="flex items-center justify-between text-xs text-zinc-500">
               <span>System Health</span>
               <span className="font-semibold text-green-600">Online</span>
