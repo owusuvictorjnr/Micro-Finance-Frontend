@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { LogOut, ChevronDown, Settings, Sliders } from "lucide-react";
 import { useAuth } from "@/providers/auth-provider";
 
@@ -93,12 +94,13 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
         title={isCollapsed ? `${user.name} (Click for Menu)` : undefined}
       >
         <div className="flex items-center gap-3 min-w-0">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-sm font-semibold text-zinc-900 dark:bg-zinc-850 dark:text-white shadow-sm border border-zinc-200 dark:border-zinc-750 overflow-hidden">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-sm font-semibold text-zinc-900 dark:bg-zinc-900 dark:text-white shadow-sm border border-zinc-200 dark:border-zinc-800 overflow-hidden">
             {user.avatarUrl ? (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
+              <Image
                 src={user.avatarUrl}
                 alt={user.name}
+                width={40}
+                height={40}
                 className="h-full w-full rounded-full object-cover"
               />
             ) : (
