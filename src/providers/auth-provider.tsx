@@ -30,15 +30,34 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        // TODO: replace with real session check
-        if (process.env.NODE_ENV === "development") {
-          // Mocking an authenticated session for local UI development
-          setUser({
+        // TODO: replace with real API session check
+        let storedUser: User | null = null;
+        try {
+          const sessionData = sessionStorage.getItem("loanprox_session");
+          if (sessionData) {
+            storedUser = JSON.parse(sessionData) as User;
+          }
+        } catch (error) {
+          console.error("Failed to load session:", error);
+        }
+
+        if (storedUser) {
+          setUser(storedUser);
+        } else if (
+          process.env.NODE_ENV === "development" ||
+          process.env.NEXT_PUBLIC_MOCK_AUTH === "true"
+        ) {
+          // Mocking an authenticated session for local UI development/demo deployments
+          const defaultAdmin: User = {
             name: "John Doe",
             email: "john.doe@loanprox.com",
             role: "admin",
             avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100",
-          });
+          };
+          setUser(defaultAdmin);
+          try {
+            sessionStorage.setItem("loanprox_session", JSON.stringify(defaultAdmin));
+          } catch {}
         } else {
           setUser(null);
         }
@@ -53,17 +72,26 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   const login = async (role: UserRole) => {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error(
+        "Client-side role selection is disabled in production. Authentication must be performed via server-side session validation."
+      );
+    }
     setIsLoading(true);
     // Mimic API delay
     await new Promise((resolve) => setTimeout(resolve, 500));
-    setUser({
+    const newUser: User = {
       name: role === "admin" ? "John Doe" : "Jane Doe",
       email: role === "admin" ? "john.doe@loanprox.com" : "jane.doe@loanprox.com",
       role,
       avatarUrl: role === "admin"
         ? "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
         : "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
-    });
+    };
+    setUser(newUser);
+    try {
+      sessionStorage.setItem("loanprox_session", JSON.stringify(newUser));
+    } catch {}
     setIsLoading(false);
   };
 
@@ -71,6 +99,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
     setUser(null);
+    try {
+      sessionStorage.removeItem("loanprox_session");
+    } catch {}
     setIsLoading(false);
   };
 
