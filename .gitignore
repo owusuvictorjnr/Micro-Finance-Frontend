@@ -39,3 +39,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE / Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Package lockfiles (yarn is used instead)
+package-lock.json
+pnpm-lock.yaml
+
+# Snyk report files
+snyk-*.json
+
+# Documentation
+/docs/
