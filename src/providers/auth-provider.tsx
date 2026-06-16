@@ -33,9 +33,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         // TODO: replace with real API session check
         let storedUser: User | null = null;
         try {
-          const sessionData = sessionStorage.getItem("loanprox_session");
-          if (sessionData) {
-            storedUser = JSON.parse(sessionData) as User;
+          if (process.env.NODE_ENV === "development") {
+            const sessionData = sessionStorage.getItem("loanprox_session");
+            if (sessionData) {
+              storedUser = JSON.parse(sessionData) as User;
+            }
           }
         } catch (error) {
           console.error("Failed to load session:", error);
@@ -43,11 +45,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
         if (storedUser) {
           setUser(storedUser);
-        } else if (
-          process.env.NODE_ENV === "development" ||
-          process.env.NEXT_PUBLIC_MOCK_AUTH === "true"
-        ) {
-          // Mocking an authenticated session for local UI development/demo deployments
+        } else if (process.env.NODE_ENV === "development") {
+          // Mocking an authenticated session for local UI development only
           const defaultAdmin: User = {
             name: "John Doe",
             email: "john.doe@loanprox.com",
