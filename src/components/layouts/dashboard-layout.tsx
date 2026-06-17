@@ -17,7 +17,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
   const toggleRole = () => {
     if (!user) return;
     const nextRole = user.role === "admin" ? "employee" : "admin";
-    login(nextRole);
+    void login(nextRole);
   };
 
   if (!user) {
@@ -41,7 +41,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
           <div className="flex items-center gap-4 text-sm font-medium">
             {/* Sidebar toggle button (matching three horizontal lines) */}
             <button
-              onClick={() => setIsCollapsed(!isCollapsed)}
+              onClick={() => setIsCollapsed((prev) => !prev)}
               className="rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 transition-colors outline-none"
               title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
             >
