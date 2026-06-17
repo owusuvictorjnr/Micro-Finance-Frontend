@@ -148,6 +148,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
         </Link>
       ) : (
         <button
+          type="button"
+          aria-expanded={item.children ? isOpen : undefined}
           onClick={handleToggle}
           title={isCollapsed ? item.title : undefined}
           className={`group flex items-center justify-between rounded-lg transition-all duration-200 outline-none ${
