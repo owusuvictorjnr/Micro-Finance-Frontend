@@ -41,23 +41,25 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
 
   const menuOptions = (
     <>
-      <span
+      <button
+        type="button"
+        disabled
         role="menuitem"
-        aria-disabled="true"
-        className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-400 opacity-60 dark:text-zinc-500 cursor-not-allowed"
+        className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-400 opacity-60 dark:text-zinc-500 cursor-not-allowed text-left bg-transparent border-0 outline-none"
       >
         <Settings className="h-4 w-4 text-zinc-400" />
         <span>My Profile</span>
-      </span>
+      </button>
       
-      <span
+      <button
+        type="button"
+        disabled
         role="menuitem"
-        aria-disabled="true"
-        className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-400 opacity-60 dark:text-zinc-500 cursor-not-allowed"
+        className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-400 opacity-60 dark:text-zinc-500 cursor-not-allowed text-left bg-transparent border-0 outline-none"
       >
         <Sliders className="h-4 w-4 text-zinc-400" />
         <span>Preferences</span>
-      </span>
+      </button>
 
       <div className="my-1 border-t border-zinc-200/50 dark:border-zinc-800/50" role="separator" />
 
