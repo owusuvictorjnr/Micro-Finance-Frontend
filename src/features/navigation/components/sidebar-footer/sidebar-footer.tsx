@@ -42,6 +42,8 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
   const menuOptions = (
     <>
       <span
+        role="menuitem"
+        aria-disabled="true"
         className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-400 opacity-60 dark:text-zinc-500 cursor-not-allowed"
       >
         <Settings className="h-4 w-4 text-zinc-400" />
@@ -49,15 +51,19 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
       </span>
       
       <span
+        role="menuitem"
+        aria-disabled="true"
         className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-400 opacity-60 dark:text-zinc-500 cursor-not-allowed"
       >
         <Sliders className="h-4 w-4 text-zinc-400" />
         <span>Preferences</span>
       </span>
 
-      <div className="my-1 border-t border-zinc-200/50 dark:border-zinc-800/50" />
+      <div className="my-1 border-t border-zinc-200/50 dark:border-zinc-800/50" role="separator" />
 
       <button
+        type="button"
+        role="menuitem"
         onClick={() => logout()}
         className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-red-600 hover:bg-red-50 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-950/20 dark:hover:text-red-300 transition-colors"
       >
@@ -73,12 +79,20 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
       {isExpanded && (
         isCollapsed ? (
           /* Floating popover wrapper for collapsed state */
-          <div className="absolute bottom-16 left-4 z-50 w-48 rounded-lg border border-zinc-200 bg-white p-1.5 shadow-lg dark:border-zinc-800/80 dark:bg-[#0B0F19] animate-in fade-in slide-in-from-bottom-2 duration-200 flex flex-col gap-1">
+          <div
+            role="menu"
+            aria-labelledby="user-menu-trigger"
+            className="absolute bottom-16 left-4 z-50 w-48 rounded-lg border border-zinc-200 bg-white p-1.5 shadow-lg dark:border-zinc-800/80 dark:bg-[#0B0F19] animate-in fade-in slide-in-from-bottom-2 duration-200 flex flex-col gap-1"
+          >
             {menuOptions}
           </div>
         ) : (
           /* Inline wrapper for expanded state */
-          <div className="flex flex-col gap-1 mb-2 bg-zinc-50/50 rounded-lg p-1.5 dark:bg-[#1E2538]/20 border border-zinc-100 dark:border-zinc-800/60 animate-in fade-in slide-in-from-bottom-2 duration-200">
+          <div
+            role="menu"
+            aria-labelledby="user-menu-trigger"
+            className="flex flex-col gap-1 mb-2 bg-zinc-50/50 rounded-lg p-1.5 dark:bg-[#1E2538]/20 border border-zinc-100 dark:border-zinc-800/60 animate-in fade-in slide-in-from-bottom-2 duration-200"
+          >
             {menuOptions}
           </div>
         )
@@ -86,6 +100,7 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
 
       {/* Trigger block */}
       <button
+        id="user-menu-trigger"
         type="button"
         onClick={handleToggle}
         aria-haspopup="menu"
