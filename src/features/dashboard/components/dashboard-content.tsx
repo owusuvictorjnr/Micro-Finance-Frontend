@@ -42,7 +42,7 @@ export default function DashboardContent() {
           {process.env.NODE_ENV === "development" ? (
             <div className="mt-8 space-y-3">
               <button
-                onClick={() => login("admin")}
+                onClick={() => void login("admin")}
                 className="flex w-full items-center justify-between rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm font-semibold text-zinc-700 transition-all duration-200 hover:bg-zinc-100 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 group text-left"
               >
                 <div className="flex items-center gap-3">
@@ -57,7 +57,7 @@ export default function DashboardContent() {
               </button>
 
               <button
-                onClick={() => login("employee")}
+                onClick={() => void login("employee")}
                 className="flex w-full items-center justify-between rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm font-semibold text-zinc-700 transition-all duration-200 hover:bg-zinc-100 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 group text-left"
               >
                 <div className="flex items-center gap-3">
