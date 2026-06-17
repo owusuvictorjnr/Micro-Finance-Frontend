@@ -1,16 +1,25 @@
 import { LayoutGrid } from "lucide-react";
 import { NavigationGroup, NavigationItem } from "../types/navigation.types";
-import { loansBnplItems } from "./loans-bnpl.config";
-import { riskComplianceItems } from "./risk-compliance.config";
-import { adminSupportItems } from "./admin-support.config";
-
-const findItem = (items: NavigationItem[], title: string): NavigationItem => {
-  const item = items.find((i) => i.title === title);
-  if (!item) {
-    throw new Error(`Navigation item with title "${title}" not found in subconfigs`);
-  }
-  return item;
-};
+import {
+  loanApplicationItem,
+  activeLoansItem,
+  bnplPlansItem,
+  repaymentsItem,
+} from "./loans-bnpl.config";
+import {
+  riskCollectionsItem,
+  complianceKycItem,
+  borrowersItem,
+  merchantsPartnersItem,
+  financeItem,
+} from "./risk-compliance.config";
+import {
+  aiInsightsItem,
+  reportsItem,
+  integrationsApiItem,
+  userManagementItem,
+  supportHelpItem,
+} from "./admin-support.config";
 
 const dashboardItem: NavigationItem = {
   title: "Dashboard",
@@ -41,20 +50,20 @@ export const navigationConfig: NavigationGroup[] = [
   {
     items: [
       dashboardItem,
-      findItem(adminSupportItems, "AI Insights"),
-      findItem(loansBnplItems, "Loan Application"),
-      findItem(loansBnplItems, "Active Loans"),
-      findItem(loansBnplItems, "BNPL Plans"),
-      findItem(loansBnplItems, "Repayments"),
-      findItem(riskComplianceItems, "Risk & Collections"),
-      findItem(riskComplianceItems, "Compliance & KYC"),
-      findItem(riskComplianceItems, "Borrowers"),
-      findItem(riskComplianceItems, "Merchants / Partners"),
-      findItem(riskComplianceItems, "Finance"),
-      findItem(adminSupportItems, "Reports"),
-      findItem(adminSupportItems, "Integrations & API"),
-      findItem(adminSupportItems, "User Management"),
-      findItem(adminSupportItems, "Support & Help"),
+      aiInsightsItem,
+      loanApplicationItem,
+      activeLoansItem,
+      bnplPlansItem,
+      repaymentsItem,
+      riskCollectionsItem,
+      complianceKycItem,
+      borrowersItem,
+      merchantsPartnersItem,
+      financeItem,
+      reportsItem,
+      integrationsApiItem,
+      userManagementItem,
+      supportHelpItem,
     ],
   },
 ];
