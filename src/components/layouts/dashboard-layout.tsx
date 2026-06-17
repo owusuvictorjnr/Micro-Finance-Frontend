@@ -20,6 +20,14 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
     login(nextRole);
   };
 
+  if (!user) {
+    return (
+      <div className="min-h-screen w-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 font-sans">
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 font-sans">
       {/* Sidebar navigation column */}
