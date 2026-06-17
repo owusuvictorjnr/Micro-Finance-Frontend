@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { z } from "zod";
+import { sessionUserSchema } from "@/features/auth/schemas/auth.schema";
 
 export type UserRole = "admin" | "employee";
 
@@ -11,13 +11,6 @@ export interface User {
   role: UserRole;
   avatarUrl?: string;
 }
-
-const sessionUserSchema = z.object({
-  name: z.string(),
-  email: z.string(),
-  role: z.enum(["admin", "employee"]),
-  avatarUrl: z.string().refine((url) => url.startsWith("https://images.unsplash.com/")).optional(),
-});
 
 interface AuthContextType {
   user: User | null;
