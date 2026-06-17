@@ -90,7 +90,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setUser(newUser);
     try {
       sessionStorage.setItem("loanprox_session", JSON.stringify(newUser));
-    } catch {}
+    } catch (error) {
+      console.warn("Failed to persist session:", error);
+    }
     setIsLoading(false);
   };
 
@@ -100,7 +102,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setUser(null);
     try {
       sessionStorage.removeItem("loanprox_session");
-    } catch {}
+    } catch (error) {
+      console.warn("Failed to clear session:", error);
+    }
     setIsLoading(false);
   };
 
