@@ -26,9 +26,11 @@ export const useNavigation = (): {
               const authorizedChildren = item.children.filter((child) =>
                 hasPermission(user.role, child.roles)
               );
+              const rest = { ...item };
+              delete rest.children;
               return {
-                ...item,
-                children: authorizedChildren.length > 0 ? authorizedChildren : undefined,
+                ...rest,
+                ...(authorizedChildren.length > 0 ? { children: authorizedChildren } : {}),
               };
             }
             return item;
