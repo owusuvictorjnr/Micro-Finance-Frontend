@@ -130,9 +130,10 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
         <Link
           href={item.href}
           title={isCollapsed ? item.title : undefined}
+          aria-label={isCollapsed ? item.title : undefined}
           className={`group flex items-center justify-between rounded-lg transition-all duration-200 ${
             isCollapsed
-              ? `h-12 w-12 mx-auto justify-center ${
+               ? `h-12 w-12 mx-auto justify-center ${
                   isActive
                     ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
                     : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-[#1E2538]/50 dark:hover:text-white"
@@ -152,9 +153,10 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
           aria-expanded={item.children ? isOpen : undefined}
           onClick={handleToggle}
           title={isCollapsed ? item.title : undefined}
+          aria-label={isCollapsed ? item.title : undefined}
           className={`group flex items-center justify-between rounded-lg transition-all duration-200 outline-none ${
             isCollapsed
-              ? `h-12 w-12 mx-auto justify-center ${
+               ? `h-12 w-12 mx-auto justify-center ${
                   isActive
                     ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
                     : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-[#1E2538]/50 dark:hover:text-white"
