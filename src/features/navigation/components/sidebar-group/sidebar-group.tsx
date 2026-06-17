@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import SidebarItem from "../sidebar-item";
 import { NavigationGroup } from "../../types/navigation.types";
