@@ -89,7 +89,10 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
 
       {/* Trigger block */}
       <button
+        type="button"
         onClick={handleToggle}
+        aria-haspopup="menu"
+        aria-expanded={isExpanded}
         className={`flex items-center justify-between w-full hover:bg-zinc-50 dark:hover:bg-[#1E2538]/50 p-1 rounded-lg transition-colors text-left outline-none ${isCollapsed ? "justify-center p-0.5 rounded-full" : ""}`}
         title={isCollapsed ? `${user.name} (Click for Menu)` : undefined}
       >
