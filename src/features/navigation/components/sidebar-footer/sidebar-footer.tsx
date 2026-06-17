@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { LogOut, ChevronDown, Settings, Sliders } from "lucide-react";
 import { useAuth } from "@/providers/auth-provider";
@@ -42,21 +41,19 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
 
   const menuOptions = (
     <>
-      <Link
-        href="/profile"
-        className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-50 transition-colors"
+      <span
+        className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-400 opacity-60 dark:text-zinc-500 cursor-not-allowed"
       >
         <Settings className="h-4 w-4 text-zinc-400" />
         <span>My Profile</span>
-      </Link>
+      </span>
       
-      <Link
-        href="/settings"
-        className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-50 transition-colors"
+      <span
+        className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-zinc-400 opacity-60 dark:text-zinc-500 cursor-not-allowed"
       >
         <Sliders className="h-4 w-4 text-zinc-400" />
         <span>Preferences</span>
-      </Link>
+      </span>
 
       <div className="my-1 border-t border-zinc-200/50 dark:border-zinc-800/50" />
 
@@ -98,7 +95,7 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
       >
         <div className="flex items-center gap-3 min-w-0">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-sm font-semibold text-zinc-900 dark:bg-zinc-900 dark:text-white shadow-sm border border-zinc-200 dark:border-zinc-800 overflow-hidden">
-            {user.avatarUrl ? (
+            {user.avatarUrl?.startsWith("https://images.unsplash.com/") ? (
               <Image
                 src={user.avatarUrl}
                 alt={user.name}
