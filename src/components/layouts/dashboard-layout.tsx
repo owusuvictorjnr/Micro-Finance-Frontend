@@ -28,7 +28,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
       {/* Main content workspace column */}
       <div className="flex flex-1 flex-col overflow-hidden min-w-0">
         
-        {/* Workspace Workspace Top Bar Header */}
+        {/* Workspace Top Bar Header */}
         <header className="flex h-16 items-center justify-between border-b border-zinc-200 bg-white px-6 dark:border-zinc-800 dark:bg-black">
           <div className="flex items-center gap-4 text-sm font-medium">
             {/* Sidebar toggle button (matching three horizontal lines) */}
