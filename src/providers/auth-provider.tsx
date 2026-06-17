@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { sessionUserSchema } from "@/features/auth/schemas/auth.schema";
 
+const SESSION_KEY = "loanprox_session";
+
 export type UserRole = "admin" | "employee";
 
 export interface User {
@@ -35,7 +37,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         let storedUser: User | null = null;
         try {
           if (process.env.NODE_ENV === "development") {
-            const sessionData = sessionStorage.getItem("loanprox_session");
+            const sessionData = sessionStorage.getItem(SESSION_KEY);
             if (sessionData) {
               const parsed = JSON.parse(sessionData);
               const result = sessionUserSchema.safeParse(parsed);
@@ -86,7 +88,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     };
     setUser(newUser);
     try {
-      sessionStorage.setItem("loanprox_session", JSON.stringify(newUser));
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify(newUser));
     } catch (error) {
       console.warn("Failed to persist session:", error);
     }
@@ -97,7 +99,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsLoading(true);
     setUser(null);
     try {
-      sessionStorage.removeItem("loanprox_session");
+      sessionStorage.removeItem(SESSION_KEY);
     } catch (error) {
       console.warn("Failed to clear session:", error);
     }
