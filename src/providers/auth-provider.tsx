@@ -57,18 +57,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
         if (storedUser) {
           setUser(storedUser);
-        } else if (process.env.NODE_ENV === "development") {
-          // Mocking an authenticated session for local UI development only
-          const defaultAdmin: User = {
-            name: "John Doe",
-            email: "john.doe@loanprox.com",
-            role: "admin",
-            avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100",
-          };
-          setUser(defaultAdmin);
-          try {
-            sessionStorage.setItem("loanprox_session", JSON.stringify(defaultAdmin));
-          } catch {}
         } else {
           setUser(null);
         }
