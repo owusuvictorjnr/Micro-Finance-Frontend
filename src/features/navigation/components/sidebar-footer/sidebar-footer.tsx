@@ -36,7 +36,7 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
     .slice(0, 2);
 
   const handleToggle = () => {
-    setIsExpanded(!isExpanded);
+    setIsExpanded((prev) => !prev);
   };
 
   const menuOptions = (
@@ -66,7 +66,7 @@ const SidebarFooter: React.FC<SidebarFooterProps> = ({ isCollapsed = false }) =>
       <button
         type="button"
         role="menuitem"
-        onClick={() => logout()}
+        onClick={() => void logout()}
         className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-xs font-medium text-red-600 hover:bg-red-50 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-950/20 dark:hover:text-red-300 transition-colors"
       >
         <LogOut className="h-4 w-4" />
