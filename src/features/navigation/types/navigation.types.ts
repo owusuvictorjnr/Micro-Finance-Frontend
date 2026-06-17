@@ -5,20 +5,20 @@ export interface NavigationSubItem {
   title: string;
   href: string;
   roles: UserRole[];
-  disabled?: boolean | undefined;
+  disabled?: boolean;
 }
 
 export interface NavigationItem {
   title: string;
-  href?: string | undefined;
+  href?: string;
   icon: LucideIcon;
   roles: UserRole[];
-  badge?: string | number | undefined;
-  disabled?: boolean | undefined;
-  children?: NavigationSubItem[] | undefined;
+  badge?: string | number;
+  disabled?: boolean;
+  children?: NavigationSubItem[];
 }
 
 export interface NavigationGroup {
-  title?: string | undefined;
+  title?: string;
   items: NavigationItem[];
 }
