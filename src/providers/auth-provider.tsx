@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { z } from "zod";
 
 export type UserRole = "admin" | "employee";
 
@@ -10,6 +11,13 @@ export interface User {
   role: UserRole;
   avatarUrl?: string;
 }
+
+const sessionUserSchema = z.object({
+  name: z.string(),
+  email: z.string(),
+  role: z.enum(["admin", "employee"]),
+  avatarUrl: z.string().refine((url) => url.startsWith("https://images.unsplash.com/")).optional(),
+});
 
 interface AuthContextType {
   user: User | null;
@@ -36,17 +44,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           if (process.env.NODE_ENV === "development") {
             const sessionData = sessionStorage.getItem("loanprox_session");
             if (sessionData) {
-              const parsed = JSON.parse(sessionData) as Partial<User>;
-              if (
-                typeof parsed.name === "string" &&
-                typeof parsed.email === "string" &&
-                (parsed.role === "admin" || parsed.role === "employee")
-              ) {
+              const parsed = JSON.parse(sessionData);
+              const result = sessionUserSchema.safeParse(parsed);
+              if (result.success) {
+                const { name, email, role, avatarUrl } = result.data;
                 storedUser = {
-                  name: parsed.name,
-                  email: parsed.email,
-                  role: parsed.role,
-                  ...(typeof parsed.avatarUrl === "string" && parsed.avatarUrl.startsWith("https://images.unsplash.com/") ? { avatarUrl: parsed.avatarUrl } : {}),
+                  name,
+                  email,
+                  role,
+                  ...(avatarUrl !== undefined ? { avatarUrl } : {}),
                 };
               }
             }
@@ -77,8 +83,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       );
     }
     setIsLoading(true);
-    // Mimic API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
     const newUser: User = {
       name: role === "admin" ? "John Doe" : "Jane Doe",
       email: role === "admin" ? "john.doe@loanprox.com" : "jane.doe@loanprox.com",
@@ -98,7 +102,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const logout = async () => {
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 500));
     setUser(null);
     try {
       sessionStorage.removeItem("loanprox_session");
