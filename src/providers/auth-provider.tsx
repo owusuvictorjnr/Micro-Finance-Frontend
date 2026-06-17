@@ -46,7 +46,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
                   name: parsed.name,
                   email: parsed.email,
                   role: parsed.role,
-                  ...(typeof parsed.avatarUrl === "string" ? { avatarUrl: parsed.avatarUrl } : {}),
+                  ...(typeof parsed.avatarUrl === "string" && parsed.avatarUrl.startsWith("https://images.unsplash.com/") ? { avatarUrl: parsed.avatarUrl } : {}),
                 };
               }
             }
