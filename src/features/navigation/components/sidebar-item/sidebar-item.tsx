@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { NavigationItem } from "../../types/navigation.types";
 
@@ -13,6 +13,7 @@ interface SidebarItemProps {
 
 const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const Icon = item.icon;
 
   // Check if any child of this item is active
@@ -38,7 +39,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
   ) : hasActiveChild;
 
   const handleToggle = (e: React.MouseEvent) => {
-    if (item.children && !isCollapsed) {
+    if (item.children && isCollapsed) {
+      const firstEnabledChild = item.children.find((child) => !child.disabled);
+      if (firstEnabledChild) {
+        router.push(firstEnabledChild.href);
+      }
+      return;
+    }
+    if (item.children) {
       e.preventDefault();
       setUserCollapsed(isOpen ? true : false);
     }
