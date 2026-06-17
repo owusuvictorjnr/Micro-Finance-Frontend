@@ -6,10 +6,14 @@ import { useAuth, UserRole } from "@/providers/auth-provider";
 
 /**
  * Checks if a user role is included in the allowed roles.
+ * IMPORTANT: Client-side RBAC is UI-only.
+ * Do not rely on these checks as a security boundary. All sensitive data access and
+ * state-changing operations must be authorized on the server (middleware / API / server actions).
  */
 export const hasPermission = (userRole: UserRole, allowedRoles: UserRole[]): boolean => {
   return allowedRoles.includes(userRole);
 };
+
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
