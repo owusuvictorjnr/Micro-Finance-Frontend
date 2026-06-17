@@ -19,7 +19,7 @@ const SidebarGroup: React.FC<SidebarGroupProps> = ({ group, isCollapsed = false 
       )}
       <div className={`flex flex-col gap-0.5 ${isCollapsed ? "mt-0" : "mt-1.5"}`}>
         {group.items.map((item) => (
-          <SidebarItem key={item.title} item={item} isCollapsed={isCollapsed} />
+          <SidebarItem key={item.href ?? item.title} item={item} isCollapsed={isCollapsed} />
         ))}
       </div>
     </div>
