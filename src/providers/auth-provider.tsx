@@ -26,7 +26,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Initialize with a default mock session (production-ready fallback)
+  // Initialize auth state (uses a mock session in development only)
   useEffect(() => {
     const initializeAuth = async () => {
       try {
@@ -36,7 +36,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           if (process.env.NODE_ENV === "development") {
             const sessionData = sessionStorage.getItem("loanprox_session");
             if (sessionData) {
-              storedUser = JSON.parse(sessionData) as User;
+              const parsed = JSON.parse(sessionData) as Partial<User>;
+              if (
+                typeof parsed.name === "string" &&
+                typeof parsed.email === "string" &&
+                (parsed.role === "admin" || parsed.role === "employee")
+              ) {
+                storedUser = {
+                  name: parsed.name,
+                  email: parsed.email,
+                  role: parsed.role,
+                  ...(typeof parsed.avatarUrl === "string" ? { avatarUrl: parsed.avatarUrl } : {}),
+                };
+              }
             }
           }
         } catch (error) {
