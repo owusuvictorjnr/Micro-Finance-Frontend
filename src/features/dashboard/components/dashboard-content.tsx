@@ -19,7 +19,7 @@ export default function DashboardContent() {
 
   if (isLoading) {
     return (
-      <div className="flex h-[60vh] items-center justify-center">
+      <div key="loading" className="flex h-[60vh] items-center justify-center">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-200 border-t-zinc-900 dark:border-zinc-800 dark:border-t-zinc-400" />
       </div>
     );
@@ -27,8 +27,8 @@ export default function DashboardContent() {
 
   if (!user) {
     return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center p-4">
-        <div className="w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-8 text-center shadow-xl dark:border-zinc-800 dark:bg-[#0B0F19] transition-all duration-300">
+      <div key="login-card" className="flex min-h-[60vh] flex-col items-center justify-center p-4">
+        <div className="w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-8 text-center shadow-xl dark:border-zinc-800 dark:bg-[#0B0F19] transition-colors duration-300">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400">
             <Lock className="h-7 w-7" />
           </div>
