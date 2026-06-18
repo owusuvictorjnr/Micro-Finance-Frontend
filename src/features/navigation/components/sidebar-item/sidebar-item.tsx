@@ -56,11 +56,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
   const renderChildren = () => {
     if (isCollapsed || !item.children || !isOpen) return null;
 
+    const exactActiveChildHref = item.children.find((c) => c.href === pathname)?.href;
+
     return (
       <div className="mt-1.5 flex flex-col gap-1.5 pl-11 pr-2">
         {item.children.map((child) => {
-          const isChildActive =
-            pathname === child.href || pathname.startsWith(child.href + "/");
+          const isChildActive = exactActiveChildHref
+            ? child.href === exactActiveChildHref
+            : pathname === child.href || pathname.startsWith(child.href + "/");
 
           if (child.disabled) {
             return (
