@@ -71,7 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
       )}
 
       {/* Navigation Groups List */}
-      <nav className={`flex-1 overflow-y-auto no-scrollbar py-3 space-y-4 ${isCollapsed ? "px-1" : "px-2"}`}>
+      <nav className={`flex-1 no-scrollbar py-3 space-y-4 ${isCollapsed ? "px-1 overflow-visible" : "px-2 overflow-y-auto"}`}>
         {isLoading ? (
           /* Skeleton Loader */
           <div className="space-y-6 px-2">
