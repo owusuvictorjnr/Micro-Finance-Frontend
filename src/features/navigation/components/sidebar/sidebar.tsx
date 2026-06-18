@@ -35,7 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
   }, [navigationGroups, searchQuery]);
 
   return (
-    <aside className={`flex h-full flex-col border-r border-zinc-200 bg-white dark:border-zinc-800/60 dark:bg-[#0B0F19] select-none transition-all duration-300 ${isCollapsed ? "w-20" : "w-64"}`}>
+    <aside className={`flex h-full flex-col border-r border-zinc-200 bg-white dark:border-zinc-800/60 dark:bg-[#0B0F19] transition-all duration-300 ${isCollapsed ? "w-20" : "w-64"}`}>
       {/* Sidebar Header / Branding (Matching screenshots) */}
       <div className={`flex h-16 items-center border-b border-zinc-200 dark:border-zinc-800/60 ${isCollapsed ? "justify-center px-0" : "gap-3 px-6"}`}>
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm">
