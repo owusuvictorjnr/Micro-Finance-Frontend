@@ -1,14 +1,52 @@
-// Copyright 2026 vitech
-// 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     https://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+"use client";
 
+import { useMemo } from "react";
+import { useAuth } from "@/providers/auth-provider";
+import { navigationConfig } from "../config/navigation.config";
+import { NavigationGroup } from "../types/navigation.types";
+import { hasPermission } from "@/lib/permissions/rbac";
+
+export const useNavigation = (): {
+  navigationGroups: NavigationGroup[];
+  isLoading: boolean;
+} => {
+  const { user, isLoading } = useAuth();
+
+  const navigationGroups = useMemo(() => {
+    if (!user) return [];
+
+    return navigationConfig
+      .map((group) => {
+        // Filter items in the group that the user is authorized to see
+        const authorizedItems = group.items
+          .filter((item) => hasPermission(user.role, item.roles))
+          .map((item) => {
+            // Filter children if present
+            if (item.children) {
+              const authorizedChildren = item.children.filter((child) =>
+                hasPermission(user.role, child.roles)
+              );
+              const rest = { ...item };
+              delete rest.children;
+              return {
+                ...rest,
+                ...(authorizedChildren.length > 0 ? { children: authorizedChildren } : {}),
+              };
+            }
+            return item;
+          });
+
+        return {
+          ...group,
+          items: authorizedItems,
+        };
+      })
+      // Remove any groups that are empty after filtering
+      .filter((group) => group.items.length > 0);
+  }, [user]);
+
+  return {
+    navigationGroups,
+    isLoading,
+  };
+};

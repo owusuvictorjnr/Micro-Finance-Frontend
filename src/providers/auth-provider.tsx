@@ -1,0 +1,122 @@
+"use client";
+
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { sessionUserSchema } from "@/features/auth/schemas/auth.schema";
+
+const SESSION_KEY = "loanprox_session";
+
+export type UserRole = "admin" | "employee";
+
+export interface User {
+  name: string;
+  email: string;
+  role: UserRole;
+  avatarUrl?: string;
+}
+
+interface AuthContextType {
+  user: User | null;
+  isLoading: boolean;
+  login: (role: UserRole) => Promise<void>;
+  logout: () => Promise<void>;
+}
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Initialize auth state (uses a mock session in development only)
+  useEffect(() => {
+    const initializeAuth = async () => {
+      try {
+        // TODO: replace with real API session check
+        let storedUser: User | null = null;
+        try {
+          if (process.env.NODE_ENV === "development") {
+            const sessionData = sessionStorage.getItem(SESSION_KEY);
+            if (sessionData) {
+              const parsed = JSON.parse(sessionData);
+              const result = sessionUserSchema.safeParse(parsed);
+              if (result.success) {
+                const { name, email, role, avatarUrl } = result.data;
+                storedUser = {
+                  name,
+                  email,
+                  role,
+                  ...(avatarUrl !== undefined ? { avatarUrl } : {}),
+                };
+              }
+            }
+          }
+        } catch (error) {
+          console.error("Failed to load session:", error);
+        }
+
+        if (storedUser) {
+          setUser(storedUser);
+        } else {
+          setUser(null);
+        }
+      } catch (error) {
+        console.error("Auth initialization failed:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initializeAuth();
+  }, []);
+
+  const login = async (role: UserRole) => {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error(
+        "Client-side role selection is disabled in production. Authentication must be performed via server-side session validation."
+      );
+    }
+    setIsLoading(true);
+    const newUser: User = {
+      name: role === "admin" ? "John Doe" : "Jane Doe",
+      email: role === "admin" ? "john.doe@loanprox.com" : "jane.doe@loanprox.com",
+      role,
+      avatarUrl: role === "admin"
+        ? "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
+        : "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+    };
+    setUser(newUser);
+    try {
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify(newUser));
+    } catch (error) {
+      console.warn("Failed to persist session:", error);
+    }
+    setIsLoading(false);
+  };
+
+  const logout = async () => {
+    setIsLoading(true);
+    setUser(null);
+    try {
+      sessionStorage.removeItem(SESSION_KEY);
+    } catch (error) {
+      console.warn("Failed to clear session:", error);
+    }
+    setIsLoading(false);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, isLoading, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};

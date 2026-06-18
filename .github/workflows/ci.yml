@@ -15,12 +15,17 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.12.0
+          node-version: 22.13.0
+          cache: 'yarn'
 
-      - run: npm ci
+      - run: corepack enable
 
-      - run: npm run lint
+      - run: yarn install --frozen-lockfile
 
-      - run: npm run typecheck
+      - run: yarn lint
 
-      - run: npm run build
+      - run: yarn typecheck
+
+      - run: yarn test
+
+      - run: yarn build
