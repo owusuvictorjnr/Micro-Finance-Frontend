@@ -143,6 +143,12 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
       className="relative w-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+          setIsHovered(false);
+        }
+      }}
     >
       {item.href ? (
         <Link
