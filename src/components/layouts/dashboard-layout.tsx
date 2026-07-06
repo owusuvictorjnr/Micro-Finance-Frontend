@@ -16,13 +16,14 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
 
   // Sync theme with document class list
   useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark") || 
-                   (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    const root = document.documentElement;
+    const hasExplicitLight = root.classList.contains("light");
+    const hasExplicitDark = root.classList.contains("dark");
+    const prefersDark =
+      window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+    const isDark = hasExplicitDark || (!hasExplicitLight && prefersDark);
+    root.classList.toggle("dark", isDark);
+    root.classList.toggle("light", !isDark);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(isDark ? "dark" : "light");
   }, []);
@@ -31,6 +32,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
     setTheme((prev) => {
       const next = prev === "light" ? "dark" : "light";
       document.documentElement.classList.toggle("dark", next === "dark");
+      document.documentElement.classList.toggle("light", next === "light");
       return next;
     });
   };
