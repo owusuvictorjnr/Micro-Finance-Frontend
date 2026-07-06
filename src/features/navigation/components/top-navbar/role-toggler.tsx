@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Shield, User as UserIcon } from "lucide-react";
 import { User } from "@/providers/auth-provider";
