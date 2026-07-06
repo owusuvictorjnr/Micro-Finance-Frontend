@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { NavigationItem } from "../../types/navigation.types";
+import SidebarHoverMenu from "../sidebar-hover-menu";
 
 interface SidebarItemProps {
   item: NavigationItem;
@@ -15,6 +16,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
   const pathname = usePathname();
   const router = useRouter();
   const Icon = item.icon;
+
+  const [isHovered, setIsHovered] = useState(false);
 
   // Check if any child of this item is active
   const hasActiveChild = item.children?.some((child) => {
@@ -136,7 +139,18 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
   );
 
   return (
-    <div className="w-full">
+    <div
+      className="relative w-full"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocusCapture={() => setIsHovered(true)}
+      onBlurCapture={(e) => {
+        const next = e.relatedTarget;
+        if (!(next instanceof Node) || !e.currentTarget.contains(next)) {
+          setIsHovered(false);
+        }
+      }}
+    >
       {item.href ? (
         <Link
           href={item.href}
@@ -149,7 +163,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
                     ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
                     : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-[#1E2538]/50 dark:hover:text-white"
                 }`
-              : `px-4 py-3 text-sm font-medium ${
+               : `px-4 py-3 text-sm font-medium ${
                   isActive
                     ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
                     : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-[#1E2538]/50 dark:hover:text-white"
@@ -172,7 +186,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
                     ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
                     : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-[#1E2538]/50 dark:hover:text-white"
                 }`
-              : `w-full px-4 py-3 text-sm font-medium ${
+               : `w-full px-4 py-3 text-sm font-medium ${
                   isActive
                     ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
                     : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-[#1E2538]/50 dark:hover:text-white"
@@ -184,6 +198,13 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
       )}
 
       {renderChildren()}
+      <SidebarHoverMenu
+        item={item}
+        isCollapsed={isCollapsed}
+        isHovered={isHovered}
+        onClose={() => setIsHovered(false)}
+        pathname={pathname}
+      />
     </div>
   );
 };
