@@ -948,6 +948,18 @@
     postcss "^8.5.10"
     tailwindcss "4.3.0"
 
+"@tanstack/query-core@5.101.0":
+  version "5.101.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.101.0.tgz#45391ce143c270b7e7a55bd1a6696918f20782d1"
+  integrity sha512-cQetA74EB+seWySv1TTKr828TnP0u39m6LykwDXIo84SNortpDkp30TMEjkqtYCNP9c40uT/iwl6MLiufEt0Ow==
+
+"@tanstack/react-query@^5.101.0":
+  version "5.101.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.101.0.tgz#2dd56c5b96ec816d6b6ec9cee5c80ed298974733"
+  integrity sha512-rLlJXSpkqfizLWgkR5+eLeIk0MvTx/meEIR7LRjxic+qxiQP8zVjq7BqQkiCMNLQBlLfuOLqqr6KO5GtrDlmSg==
+  dependencies:
+    "@tanstack/query-core" "5.101.0"
+
 "@ts-morph/common@~0.27.0":
   version "0.27.0"
   resolved "https://registry.npmjs.org/@ts-morph/common/-/common-0.27.0.tgz"
@@ -5021,12 +5033,7 @@ zod@^3.24.1:
   resolved "https://registry.npmjs.org/zod/-/zod-3.25.76.tgz"
   integrity sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==
 
-"zod@^3.25 || ^4.0", "zod@^3.25.0 || ^4.0.0":
-  version "4.4.3"
-  resolved "https://registry.npmjs.org/zod/-/zod-4.4.3.tgz"
-  integrity sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==
-
-zod@^4.4.3:
+"zod@^3.25 || ^4.0", "zod@^3.25.0 || ^4.0.0", zod@^4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/zod/-/zod-4.4.3.tgz#b680f172885d18bbebf21a834ea25e55a1bbf356"
   integrity sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==
