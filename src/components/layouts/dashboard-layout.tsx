@@ -23,20 +23,16 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
     } else {
       document.documentElement.classList.remove("dark");
     }
-    const timer = setTimeout(() => {
-      setTheme(isDark ? "dark" : "light");
-    }, 0);
-    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTheme(isDark ? "dark" : "light");
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    setTheme((prev) => {
+      const next = prev === "light" ? "dark" : "light";
+      document.documentElement.classList.toggle("dark", next === "dark");
+      return next;
+    });
   };
 
   // Helper to toggle role for testing (since auth is mock)
