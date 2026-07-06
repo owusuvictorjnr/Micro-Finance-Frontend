@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Menu } from "lucide-react";
 import { User } from "@/providers/auth-provider";
@@ -30,6 +32,8 @@ export const TopNavbar: React.FC<TopNavbarProps> = ({
         <button
           onClick={onToggleCollapse}
           type="button"
+          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          aria-expanded={!isCollapsed}
           className="rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-800/80 dark:hover:text-zinc-50 transition-colors outline-none"
           title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
         >
