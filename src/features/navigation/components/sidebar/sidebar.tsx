@@ -24,7 +24,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
         const matchingItems = group.items.filter(
           (item) =>
             item.title.toLowerCase().includes(query) ||
-            item.children?.some((child) => child.title.toLowerCase().includes(query))
+            item.children?.some((child) =>
+              child.title.toLowerCase().includes(query),
+            ),
         );
         return {
           ...group,
@@ -35,9 +37,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
   }, [navigationGroups, searchQuery]);
 
   return (
-    <aside className={`flex h-full flex-col border-r border-zinc-200 bg-white dark:border-zinc-800/60 dark:bg-[#0B0F19] transition-all duration-300 ${isCollapsed ? "w-20" : "w-64"}`}>
+    <aside
+      className={`flex h-full flex-col border-r border-zinc-200 bg-white dark:border-zinc-800/60 dark:bg-[#0B0F19] transition-all duration-300 ${isCollapsed ? "w-20" : "w-64"}`}
+    >
       {/* Sidebar Header / Branding (Matching screenshots) */}
-      <div className={`flex h-16 items-center border-b border-zinc-200 dark:border-zinc-800/60 ${isCollapsed ? "justify-center px-0" : "gap-3 px-6"}`}>
+      <div
+        className={`flex h-16 items-center border-b border-zinc-200 dark:border-zinc-800/60 ${isCollapsed ? "justify-center px-0" : "gap-3 px-6"}`}
+      >
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm">
           <Landmark className="h-5 w-5" />
         </div>
@@ -71,13 +77,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
       )}
 
       {/* Navigation Groups List */}
-      <nav className={`flex-1 no-scrollbar py-3 space-y-4 ${isCollapsed ? "px-1 overflow-visible" : "px-2 overflow-y-auto"}`}>
+      <nav
+        className={`flex-1 no-scrollbar py-3 space-y-4 ${isCollapsed ? "px-1 overflow-visible" : "px-2 overflow-y-auto"}`}
+      >
         {isLoading ? (
           /* Skeleton Loader */
           <div className="space-y-6 px-2">
             {[1, 2].map((g) => (
               <div key={g} className="space-y-3">
-                {!isCollapsed && <div className="h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-900" />}
+                {!isCollapsed && (
+                  <div className="h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-900" />
+                )}
                 <div className="space-y-2">
                   {[1, 2, 3].map((i) => (
                     <div
@@ -91,7 +101,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
           </div>
         ) : filteredGroups.length > 0 ? (
           filteredGroups.map((group, index) => (
-            <SidebarGroup key={group.title || index} group={group} isCollapsed={isCollapsed} />
+            <SidebarGroup
+              key={group.title || index}
+              group={group}
+              isCollapsed={isCollapsed}
+            />
           ))
         ) : (
           !isCollapsed && (
