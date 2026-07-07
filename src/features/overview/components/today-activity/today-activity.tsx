@@ -16,10 +16,10 @@ export const TodayActivity: React.FC = () => {
       </div>
 
       {/* Timeline */}
-      <div className="mt-6 relative border-l border-zinc-200 pl-5.5 dark:border-zinc-800 space-y-6">
+      <div className="mt-6 relative border-l border-zinc-200 pl-6 dark:border-zinc-800 space-y-6">
         {/* Event 1 */}
         <div className="relative">
-          <div className="absolute -left-[29px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#5F63F2]/40 bg-[#5F63F2]/10">
+          <div className="absolute -left-[32px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#5F63F2]/40 bg-[#5F63F2]/10">
             <div className="h-1.5 w-1.5 rounded-full bg-[#5F63F2]" />
           </div>
           <div>
@@ -30,7 +30,7 @@ export const TodayActivity: React.FC = () => {
 
         {/* Event 2 */}
         <div className="relative">
-          <div className="absolute -left-[29px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#5F63F2]/40 bg-[#5F63F2]/10">
+          <div className="absolute -left-[32px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#5F63F2]/40 bg-[#5F63F2]/10">
             <div className="h-1.5 w-1.5 rounded-full bg-[#5F63F2]" />
           </div>
           <div>
@@ -41,7 +41,7 @@ export const TodayActivity: React.FC = () => {
 
         {/* Event 3 */}
         <div className="relative">
-          <div className="absolute -left-[29px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#F2994A]/40 bg-[#F2994A]/10">
+          <div className="absolute -left-[32px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#F2994A]/40 bg-[#F2994A]/10">
             <div className="h-1.5 w-1.5 rounded-full bg-[#F2994A]" />
           </div>
           <div>
@@ -52,7 +52,7 @@ export const TodayActivity: React.FC = () => {
 
         {/* Event 4 */}
         <div className="relative">
-          <div className="absolute -left-[29px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#5F63F2]/40 bg-[#5F63F2]/10">
+          <div className="absolute -left-[32px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#5F63F2]/40 bg-[#5F63F2]/10">
             <div className="h-1.5 w-1.5 rounded-full bg-[#5F63F2]" />
           </div>
           <div>
