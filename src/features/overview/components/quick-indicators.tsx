@@ -18,7 +18,7 @@ export const QuickIndicators: React.FC = () => {
       {/* Today's EMIs */}
       <div className="flex items-center gap-4 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800/80 dark:bg-[#0E1322]/80 transition-colors">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#5F63F2] text-white shadow-sm">
-          <CalendarIcon className="h-4.5 w-4.5" />
+          <CalendarIcon className="h-5 w-5" />
         </div>
         <div>
           <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">{"Today's EMIs"}</div>
@@ -29,7 +29,7 @@ export const QuickIndicators: React.FC = () => {
       {/* New Borrowers */}
       <div className="flex items-center gap-4 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800/80 dark:bg-[#0E1322]/80 transition-colors">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#00ADC6] text-white shadow-sm">
-          <Users className="h-4.5 w-4.5" />
+          <Users className="h-5 w-5" />
         </div>
         <div>
           <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">Active Borrowers</div>
@@ -40,7 +40,7 @@ export const QuickIndicators: React.FC = () => {
       {/* Collected */}
       <div className="flex items-center gap-4 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800/80 dark:bg-[#0E1322]/80 transition-colors">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#10B981] text-white shadow-sm">
-          <CircleCheck className="h-4.5 w-4.5" />
+          <CircleCheck className="h-5 w-5" />
         </div>
         <div>
           <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">Collected Today</div>
@@ -51,7 +51,7 @@ export const QuickIndicators: React.FC = () => {
       {/* Overdue */}
       <div className="flex items-center gap-4 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800/80 dark:bg-[#0E1322]/80 transition-colors">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#EF4444] text-white shadow-sm">
-          <AlertTriangle className="h-4.5 w-4.5" />
+          <AlertTriangle className="h-5 w-5" />
         </div>
         <div>
           <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">Overdue Loans</div>
