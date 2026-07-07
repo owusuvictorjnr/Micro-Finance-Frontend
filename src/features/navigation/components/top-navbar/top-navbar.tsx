@@ -15,6 +15,7 @@ export interface TopNavbarProps {
   theme: "light" | "dark";
   onToggleTheme: () => void;
   onToggleRole: () => void;
+  onNewLoan?: () => void;
 }
 
 export const TopNavbar: React.FC<TopNavbarProps> = ({
@@ -24,6 +25,7 @@ export const TopNavbar: React.FC<TopNavbarProps> = ({
   theme,
   onToggleTheme,
   onToggleRole,
+  onNewLoan,
 }) => {
   return (
     <header className="flex h-16 items-center justify-between border-b border-zinc-200 bg-white px-6 dark:border-zinc-800 dark:bg-[#0B0F19] transition-colors duration-300">
@@ -52,7 +54,7 @@ export const TopNavbar: React.FC<TopNavbarProps> = ({
         <NotificationButton />
 
         {/* New Loan Action Button */}
-        <NewLoanButton />
+        {onNewLoan && <NewLoanButton onClick={onNewLoan} />}
       </div>
     </header>
   );
