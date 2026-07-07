@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6,
 p,
 span,
 svg {
-  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-property: background-color, border-color, color, box-shadow;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
