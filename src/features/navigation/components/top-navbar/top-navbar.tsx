@@ -35,6 +35,7 @@ export const TopNavbar: React.FC<TopNavbarProps> = ({
           onClick={onToggleCollapse}
           type="button"
           aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          aria-controls="app-sidebar"
           aria-expanded={!isCollapsed}
           className="rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-800/80 dark:hover:text-zinc-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]"
           title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
