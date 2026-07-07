@@ -43,7 +43,7 @@ export const PortfolioPerformanceChart: React.FC<PortfolioPerformanceChartProps>
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`rounded-md px-3 py-1 text-[10px] font-semibold transition-all duration-250 cursor-pointer ${
+              className={`rounded-md px-3 py-1 text-[10px] font-semibold transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5F63F2] focus-visible:ring-offset-1 focus-visible:ring-offset-zinc-100 dark:focus-visible:ring-offset-[#151B2E] ${
                 filter === f
                   ? "bg-[#5F63F2] text-white shadow-sm"
                   : "text-zinc-500 hover:text-zinc-800 hover:bg-zinc-50/40 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-[#1C253B]"
