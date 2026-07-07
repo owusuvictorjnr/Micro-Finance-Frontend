@@ -24,7 +24,7 @@ export const KpiGrid: React.FC = () => {
         value={totalPortfolio}
         icon={
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00ADC6] text-white shadow-sm">
-            <Wallet className="h-4.5 w-4.5" />
+            <Wallet className="h-4 w-4" />
           </div>
         }
         trendText="+12.5% vs last month"
@@ -39,7 +39,7 @@ export const KpiGrid: React.FC = () => {
         value={activeLoans}
         icon={
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#10B981] text-white shadow-sm">
-            <Layers className="h-4.5 w-4.5" />
+            <Layers className="h-4 w-4" />
           </div>
         }
         trendText="+8.2% 156 new this month"
@@ -85,7 +85,7 @@ export const KpiGrid: React.FC = () => {
         value={bnplVolume}
         icon={
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00ADC6] text-white shadow-sm">
-            <CreditCard className="h-4.5 w-4.5" />
+            <CreditCard className="h-4 w-4" />
           </div>
         }
         trendText="+28.4% trending up"
@@ -104,7 +104,7 @@ export const KpiGrid: React.FC = () => {
         value={collectionRate}
         icon={
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#F59E0B] text-white shadow-sm">
-            <Percent className="h-4.5 w-4.5" />
+            <Percent className="h-4 w-4" />
           </div>
         }
         trendText="-0.3% needs attention"
