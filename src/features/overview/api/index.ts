@@ -66,7 +66,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
       status: "REJECTED",
     },
     {
-      id: "LN-2024-8847",
+      id: "LN-2024-8843",
       borrower: "Sarah Johnson",
       avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80",
       amount: "GH₵15,000",
@@ -77,7 +77,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
       status: "PENDING",
     },
     {
-      id: "LN-2024-8846",
+      id: "LN-2024-8842",
       borrower: "Michael Chen",
       avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80",
       amount: "GH₵8,500",
@@ -88,7 +88,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
       status: "APPROVED",
     },
     {
-      id: "LN-2024-8845",
+      id: "LN-2024-8841",
       borrower: "Emily Davis",
       avatarUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80",
       amount: "GH₵25,000",
