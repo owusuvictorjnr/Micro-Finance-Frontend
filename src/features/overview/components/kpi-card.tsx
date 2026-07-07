@@ -77,7 +77,7 @@ export const KpiCard: React.FC<KpiCardProps> = ({
 
       {progress !== undefined && (
         <div className="mt-4 space-y-1.5">
-          <div className="flex justify-between text-[11px] font-semibold text-zinc-550 dark:text-zinc-400">
+          <div className="flex justify-between text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">
             <span>{targetText}</span>
             <span>{progress}%</span>
           </div>
