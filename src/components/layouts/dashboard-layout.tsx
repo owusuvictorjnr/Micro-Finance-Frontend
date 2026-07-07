@@ -20,7 +20,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
     const hasExplicitLight = root.classList.contains("light");
     const hasExplicitDark = root.classList.contains("dark");
     const prefersDark =
-      window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+      window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false;
     const isDark = hasExplicitDark || (!hasExplicitLight && prefersDark);
     root.classList.toggle("dark", isDark);
     root.classList.toggle("light", !isDark);
