@@ -29,7 +29,7 @@ export const RiskAlerts: React.FC = () => {
           </div>
           <div>
             <div className="font-bold text-zinc-900 dark:text-zinc-100">High Default Risk</div>
-            <p className="text-[10px] text-zinc-550 dark:text-zinc-400 mt-0.5">3 borrowers flagged by AI model</p>
+            <p className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5">3 borrowers flagged by AI model</p>
           </div>
         </div>
 
@@ -40,7 +40,7 @@ export const RiskAlerts: React.FC = () => {
           </div>
           <div>
             <div className="font-bold text-zinc-900 dark:text-zinc-100">Overdue EMIs</div>
-            <p className="text-[10px] text-zinc-550 dark:text-zinc-400 mt-0.5">12 payments pending &gt;7 days</p>
+            <p className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5">12 payments pending &gt;7 days</p>
           </div>
         </div>
 
@@ -51,13 +51,13 @@ export const RiskAlerts: React.FC = () => {
           </div>
           <div>
             <div className="font-bold text-zinc-900 dark:text-zinc-100">KYC Expiring</div>
-            <p className="text-[10px] text-zinc-550 dark:text-zinc-400 mt-0.5">8 borrowers need re-verification</p>
+            <p className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5">8 borrowers need re-verification</p>
           </div>
         </div>
       </div>
 
       {/* View All button */}
-      <button className="mt-4 w-full rounded-xl border border-zinc-200 bg-zinc-50/50 py-2.5 text-center text-xs font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-[#0B0F19] dark:text-zinc-300 dark:hover:bg-zinc-800/60 transition-colors shadow-sm cursor-pointer">
+      <button className="mt-4 w-full rounded-xl border border-zinc-200 bg-zinc-50/50 py-2.5 text-center text-xs font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-[#0B0F19] dark:text-zinc-300 dark:hover:bg-zinc-800/60 transition-colors shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]">
         View All Alerts
       </button>
     </div>
