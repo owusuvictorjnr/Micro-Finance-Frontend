@@ -92,7 +92,7 @@ export const OverviewContent = () => {
               <span className="text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider block mb-1">
                 Security Policy
               </span>
-              <p className="text-xs text-zinc-650 dark:text-zinc-400 leading-relaxed">
+              <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 Direct client-side authentication is disabled in production. Authentication must be performed via server-side session provider or SSO integration.
               </p>
             </div>
