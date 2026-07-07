@@ -38,6 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
 
   return (
     <aside
+      id="app-sidebar"
       className={`flex h-full flex-col border-r border-zinc-200 bg-white dark:border-zinc-800/60 dark:bg-[#0B0F19] transition-all duration-300 ${isCollapsed ? "w-20" : "w-64"}`}
     >
       {/* Sidebar Header / Branding (Matching screenshots) */}
