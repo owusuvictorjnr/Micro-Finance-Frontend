@@ -21,7 +21,7 @@ export const PortfolioPerformanceChart: React.FC<PortfolioPerformanceChartProps>
               Portfolio Performance
             </h3>
             {/* Legends */}
-            <div className="flex items-center gap-3 text-[10px] font-semibold text-zinc-550 dark:text-zinc-400">
+            <div className="flex items-center gap-3 text-[10px] font-semibold text-zinc-500 dark:text-zinc-400">
               <span className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#5F63F2]" />
                 Disbursements
@@ -77,7 +77,7 @@ export const PortfolioPerformanceChart: React.FC<PortfolioPerformanceChartProps>
           <line x1="50" y1="137" x2="850" y2="137" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeDasharray="4" />
           <line x1="50" y1="165" x2="850" y2="165" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeDasharray="4" />
           <line x1="50" y1="193" x2="850" y2="193" stroke="currentColor" className="text-zinc-100 dark:text-zinc-800/40" strokeDasharray="4" />
-          <line x1="50" y1="221" x2="850" y2="221" stroke="currentColor" className="text-zinc-150 dark:text-zinc-800/50" />
+          <line x1="50" y1="221" x2="850" y2="221" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800/50" />
 
           {/* Y Axis Values */}
           <text x="35" y="29" fill="currentColor" className="text-[10px] text-zinc-400 dark:text-zinc-400" textAnchor="end">3.2</text>
