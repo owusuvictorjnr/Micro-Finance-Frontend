@@ -16,7 +16,7 @@ export const TodayActivity: React.FC = () => {
       </div>
 
       {/* Timeline */}
-      <div className="mt-6 relative border-l border-zinc-150 pl-5.5 dark:border-zinc-800 space-y-6">
+      <div className="mt-6 relative border-l border-zinc-200 pl-5.5 dark:border-zinc-800 space-y-6">
         {/* Event 1 */}
         <div className="relative">
           <div className="absolute -left-[29px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#5F63F2]/40 bg-[#5F63F2]/10">
