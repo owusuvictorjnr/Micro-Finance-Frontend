@@ -46,7 +46,7 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`rounded-lg px-4 py-2.5 text-xs font-semibold tracking-wide transition-all duration-200 active:scale-95 cursor-pointer ${
+            className={`rounded-lg px-4 py-2.5 text-xs font-semibold tracking-wide transition-all duration-200 active:scale-95 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19] ${
               activeTab === tab
                 ? "bg-[#5F63F2] text-white shadow-md shadow-indigo-600/10"
                 : "bg-zinc-100/80 hover:bg-zinc-200/80 border border-zinc-200/30 text-zinc-500 dark:bg-[#0E1322]/80 dark:hover:bg-[#161D30]/80 dark:border-zinc-800/30 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
@@ -63,7 +63,7 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
         <div className="relative" ref={timeRef}>
           <button
             onClick={() => setIsTimeDropdownOpen(!isTimeDropdownOpen)}
-            className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-97 select-none"
+            className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-[0.97] select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]"
           >
             <CalendarIcon className="h-4 w-4 text-zinc-400" />
             <span>{timeRange}</span>
@@ -90,7 +90,7 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
         </div>
 
         {/* Filter Button */}
-        <button className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-97">
+        <button className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]">
           <SlidersHorizontal className="h-4 w-4 text-zinc-400" />
           <span>Filters</span>
         </button>
@@ -99,7 +99,7 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
         <div className="relative" ref={exportRef}>
           <button
             onClick={() => setIsExportDropdownOpen(!isExportDropdownOpen)}
-            className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-97 select-none"
+            className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-[0.97] select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]"
           >
             <Download className="h-4 w-4 text-zinc-400" />
             <span>Export</span>
