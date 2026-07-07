@@ -9,7 +9,7 @@ export const RiskAlerts: React.FC = () => {
       <div className="space-y-0.5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <AlertTriangle className="h-4.5 w-4.5 text-rose-500" />
+            <AlertTriangle className="h-4 w-4 text-rose-500" />
             <h3 className="text-sm font-bold tracking-tight text-zinc-900 dark:text-white">
               Risk Alerts
             </h3>
@@ -25,7 +25,7 @@ export const RiskAlerts: React.FC = () => {
         {/* High Default Risk Card */}
         <div className="flex gap-3 text-xs bg-rose-500/5 dark:bg-[#1E1218] border border-rose-500/10 dark:border-rose-950/30 rounded-xl p-3">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-rose-500/10 text-rose-500">
-            <AlertOctagon className="h-4.5 w-4.5" />
+            <AlertOctagon className="h-4 w-4" />
           </div>
           <div>
             <div className="font-bold text-zinc-900 dark:text-zinc-100">High Default Risk</div>
@@ -36,7 +36,7 @@ export const RiskAlerts: React.FC = () => {
         {/* Overdue EMIs Card */}
         <div className="flex gap-3 text-xs bg-amber-500/5 dark:bg-[#1E1712] border border-amber-500/10 dark:border-amber-950/30 rounded-xl p-3">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-amber-500/10 text-amber-500">
-            <Clock className="h-4.5 w-4.5" />
+            <Clock className="h-4 w-4" />
           </div>
           <div>
             <div className="font-bold text-zinc-900 dark:text-zinc-100">Overdue EMIs</div>
@@ -47,7 +47,7 @@ export const RiskAlerts: React.FC = () => {
         {/* KYC Expiring Card */}
         <div className="flex gap-3 text-xs bg-rose-500/5 dark:bg-[#1E1218] border border-rose-500/10 dark:border-rose-950/30 rounded-xl p-3">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-rose-500/10 text-rose-500">
-            <UserCheck className="h-4.5 w-4.5" />
+            <UserCheck className="h-4 w-4" />
           </div>
           <div>
             <div className="font-bold text-zinc-900 dark:text-zinc-100">KYC Expiring</div>
