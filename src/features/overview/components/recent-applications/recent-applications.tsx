@@ -186,14 +186,14 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
                     <td className="py-4 pr-4 pl-2 text-right">
                       {statusUpper === "APPROVED" ? (
                         <button
-                          disabled={isMutating}
+                          disabled={approveMutation.isPending}
                           className="rounded-lg bg-emerald-500 px-4 py-1.5 text-xs font-bold text-white hover:bg-emerald-600 transition-colors shadow-sm cursor-pointer border border-transparent disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
                         >
                           Disburse
                         </button>
                       ) : statusUpper === "REJECTED" ? (
                         <button
-                          disabled={isMutating}
+                          disabled={approveMutation.isPending}
                           className="rounded-lg border border-zinc-200/60 bg-zinc-800 px-4 py-1.5 text-xs font-bold text-white hover:bg-zinc-700 dark:border-zinc-800 dark:bg-[#1A2035] dark:hover:bg-[#252C48] transition-colors shadow-sm cursor-pointer disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
                         >
                           Details
@@ -201,7 +201,7 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
                       ) : (
                         <button
                           onClick={() => approveMutation.mutate(app.id)}
-                          disabled={isMutating}
+                          disabled={approveMutation.isPending}
                           className="rounded-lg border border-zinc-200/60 bg-zinc-800 px-4 py-1.5 text-xs font-bold text-white hover:bg-zinc-700 dark:border-zinc-800 dark:bg-[#1A2035] dark:hover:bg-[#252C48] transition-colors shadow-sm cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1 ml-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
                         >
                           {isMutating ? (
