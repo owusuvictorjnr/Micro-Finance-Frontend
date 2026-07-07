@@ -40,12 +40,12 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
   const getTypeBadgeStyles = (type: string) => {
     const t = type.toUpperCase();
     if (t === "PERSONAL") {
-      return "bg-sky-500/10 text-sky-550 border border-sky-500/20 dark:text-sky-400";
+      return "bg-sky-500/10 text-sky-600 border border-sky-500/20 dark:text-sky-400";
     }
     if (t === "BUSINESS") {
-      return "bg-teal-500/10 text-teal-550 border border-teal-500/20 dark:text-teal-400";
+      return "bg-teal-500/10 text-teal-600 border border-teal-500/20 dark:text-teal-400";
     }
-    return "bg-cyan-500/10 text-cyan-550 border border-cyan-500/20 dark:text-cyan-400";
+    return "bg-cyan-500/10 text-cyan-600 border border-cyan-500/20 dark:text-cyan-400";
   };
 
   return (
@@ -55,7 +55,7 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
           <h3 className="text-sm font-bold tracking-tight text-zinc-900 dark:text-white">
             Recent Loan Applications
           </h3>
-          <p className="text-[11px] text-zinc-550 dark:text-zinc-400">
+          <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
             Latest applications requiring review
           </p>
         </div>
@@ -69,7 +69,7 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
             onChange={(e) => setSearchQuery(e.target.value)}
             className="rounded-lg border border-zinc-200 bg-zinc-50/50 px-3 py-1.5 text-xs text-zinc-800 outline-none focus:border-[#5F63F2] focus:bg-white dark:border-zinc-800 dark:bg-[#0B0F19] dark:text-zinc-200 dark:focus:border-[#5F63F2] dark:focus:bg-[#0B0F19] transition-colors shadow-inner w-44"
           />
-          <button className="flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-[#0B0F19] dark:text-zinc-300 dark:hover:bg-zinc-800/60 transition-colors shadow-sm cursor-pointer">
+          <button className="flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-[#0B0F19] dark:text-zinc-300 dark:hover:bg-zinc-800/60 transition-colors shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
             <span>View All</span>
           </button>
         </div>
@@ -79,7 +79,7 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
       <div className="mt-6 overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="text-[10px] font-bold text-zinc-400 dark:text-zinc-550 uppercase tracking-wider bg-zinc-500/5 dark:bg-black/35">
+            <tr className="text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider bg-zinc-500/5 dark:bg-black/35">
               <th className="py-4 pl-4 rounded-l-lg pr-2">BORROWER</th>
               <th className="py-4 px-2">AMOUNT</th>
               <th className="py-4 px-2">TYPE</th>
@@ -88,7 +88,7 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
               <th className="py-4 pr-4 pl-2 rounded-r-lg text-right">ACTION</th>
             </tr>
           </thead>
-          <tbody className="text-sm font-medium text-zinc-750 dark:text-zinc-300">
+          <tbody className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
             {isLoading ? (
               <tr>
                 <td colSpan={6} className="py-12 text-center text-zinc-400 font-bold">
@@ -105,11 +105,11 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
                 const statusUpper = app.status.toUpperCase();
 
                 return (
-                  <tr key={`${app.id}-${index}`} className="group hover:bg-zinc-50/50 dark:hover:bg-zinc-850/10 transition-colors">
+                  <tr key={`${app.id}-${index}`} className="group hover:bg-zinc-50/50 dark:hover:bg-zinc-800/10 transition-colors">
                     {/* Borrower Profile */}
                     <td className="py-4 pl-4 pr-2">
                       <div className="flex items-center gap-3">
-                        <div className="h-9 w-9 shrink-0 overflow-hidden rounded-full ring-2 ring-zinc-200 dark:ring-zinc-850/80">
+                        <div className="h-9 w-9 shrink-0 overflow-hidden rounded-full ring-2 ring-zinc-200 dark:ring-zinc-800/80">
                           {app.avatarUrl ? (
                             <Image
                               src={app.avatarUrl}
@@ -120,11 +120,12 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
                               unoptimized
                             />
                           ) : (
-                            <div className="flex h-full w-full items-center justify-center bg-zinc-100 text-sm font-bold text-zinc-650 dark:bg-zinc-800 dark:text-zinc-400">
+                            <div className="flex h-full w-full items-center justify-center bg-zinc-100 text-sm font-bold text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
                               {app.borrower.charAt(0)}
                             </div>
                           )}
                         </div>
+                        
                         <div>
                           <div className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm">{app.borrower}</div>
                           <div className="text-xs text-zinc-400 dark:text-zinc-500 font-medium mt-0.5">{app.id}</div>
@@ -186,14 +187,14 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
                       {statusUpper === "APPROVED" ? (
                         <button
                           disabled={isMutating}
-                          className="rounded-lg bg-emerald-500 px-4 py-1.5 text-xs font-bold text-white hover:bg-emerald-600 transition-colors shadow-sm cursor-pointer border border-transparent disabled:opacity-50"
+                          className="rounded-lg bg-emerald-500 px-4 py-1.5 text-xs font-bold text-white hover:bg-emerald-600 transition-colors shadow-sm cursor-pointer border border-transparent disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
                         >
                           Disburse
                         </button>
                       ) : statusUpper === "REJECTED" ? (
                         <button
                           disabled={isMutating}
-                          className="rounded-lg border border-zinc-200/60 bg-zinc-800 px-4 py-1.5 text-xs font-bold text-white hover:bg-zinc-700 dark:border-zinc-800 dark:bg-[#1A2035] dark:hover:bg-[#252C48] transition-colors shadow-sm cursor-pointer disabled:opacity-50"
+                          className="rounded-lg border border-zinc-200/60 bg-zinc-800 px-4 py-1.5 text-xs font-bold text-white hover:bg-zinc-700 dark:border-zinc-800 dark:bg-[#1A2035] dark:hover:bg-[#252C48] transition-colors shadow-sm cursor-pointer disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
                         >
                           Details
                         </button>
@@ -201,7 +202,7 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
                         <button
                           onClick={() => approveMutation.mutate(app.id)}
                           disabled={isMutating}
-                          className="rounded-lg border border-zinc-200/60 bg-zinc-800 px-4 py-1.5 text-xs font-bold text-white hover:bg-zinc-700 dark:border-zinc-800 dark:bg-[#1A2035] dark:hover:bg-[#252C48] transition-colors shadow-sm cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1 ml-auto"
+                          className="rounded-lg border border-zinc-200/60 bg-zinc-800 px-4 py-1.5 text-xs font-bold text-white hover:bg-zinc-700 dark:border-zinc-800 dark:bg-[#1A2035] dark:hover:bg-[#252C48] transition-colors shadow-sm cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1 ml-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
                         >
                           {isMutating ? (
                             <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white border-t-transparent" />
