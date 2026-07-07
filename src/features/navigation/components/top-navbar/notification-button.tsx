@@ -17,7 +17,13 @@ export const NotificationButton: React.FC<NotificationButtonProps> = ({
     <button
       onClick={onClick}
       type="button"
-      aria-label="Notifications"
+      aria-label={
+        isDisabled
+          ? "Notifications (disabled)"
+          : hasNotifications
+            ? "Notifications (new)"
+            : "Notifications"
+      }
       disabled={isDisabled}
       aria-disabled={isDisabled}
       className="relative rounded-full border border-zinc-200 p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-950 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-transparent disabled:hover:text-zinc-500 dark:border-zinc-800/60 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:disabled:hover:bg-transparent dark:disabled:hover:text-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]"
