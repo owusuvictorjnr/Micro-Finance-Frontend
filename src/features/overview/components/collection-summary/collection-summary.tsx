@@ -10,7 +10,7 @@ export const CollectionSummary: React.FC = () => {
         <h3 className="text-sm font-bold tracking-tight text-zinc-900 dark:text-white">
           Collection Summary
         </h3>
-        <button className="flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50/50 px-3 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-[#070B13]/90 dark:text-zinc-300 dark:hover:bg-[#0E1322] transition-all cursor-pointer">
+        <button className="flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50/50 px-3 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-[#070B13]/90 dark:text-zinc-300 dark:hover:bg-[#0E1322] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]">
           This Week
           <ChevronDown className="h-3.5 w-3.5 text-zinc-500" />
         </button>
@@ -36,14 +36,14 @@ export const CollectionSummary: React.FC = () => {
       <div className="mt-5 flex-1 flex items-center justify-center h-[180px] w-full">
         <svg viewBox="0 0 420 190" className="h-full w-full overflow-visible font-sans" preserveAspectRatio="none">
           {/* Grid lines (from 70 down to 0) */}
-          <line x1="35" y1="20" x2="395" y2="20" stroke="currentColor" className="text-zinc-150 dark:text-zinc-800/40" strokeWidth="1" />
-          <line x1="35" y1="40" x2="395" y2="40" stroke="currentColor" className="text-zinc-150 dark:text-zinc-800/40" strokeWidth="1" />
-          <line x1="35" y1="60" x2="395" y2="60" stroke="currentColor" className="text-zinc-150 dark:text-zinc-800/40" strokeWidth="1" />
-          <line x1="35" y1="80" x2="395" y2="80" stroke="currentColor" className="text-zinc-150 dark:text-zinc-800/40" strokeWidth="1" />
-          <line x1="35" y1="100" x2="395" y2="100" stroke="currentColor" className="text-zinc-150 dark:text-zinc-800/40" strokeWidth="1" />
-          <line x1="35" y1="120" x2="395" y2="120" stroke="currentColor" className="text-zinc-150 dark:text-zinc-800/40" strokeWidth="1" />
-          <line x1="35" y1="140" x2="395" y2="140" stroke="currentColor" className="text-zinc-150 dark:text-zinc-800/40" strokeWidth="1" />
-          <line x1="35" y1="160" x2="395" y2="160" stroke="currentColor" className="text-zinc-150 dark:text-zinc-800/40" strokeWidth="1" />
+          <line x1="35" y1="20" x2="395" y2="20" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800/40" strokeWidth="1" />
+          <line x1="35" y1="40" x2="395" y2="40" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800/40" strokeWidth="1" />
+          <line x1="35" y1="60" x2="395" y2="60" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800/40" strokeWidth="1" />
+          <line x1="35" y1="80" x2="395" y2="80" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800/40" strokeWidth="1" />
+          <line x1="35" y1="100" x2="395" y2="100" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800/40" strokeWidth="1" />
+          <line x1="35" y1="120" x2="395" y2="120" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800/40" strokeWidth="1" />
+          <line x1="35" y1="140" x2="395" y2="140" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800/40" strokeWidth="1" />
+          <line x1="35" y1="160" x2="395" y2="160" stroke="currentColor" className="text-zinc-200 dark:text-zinc-800/40" strokeWidth="1" />
  
           {/* Y Axis labels */}
           <text x="25" y="24" fill="currentColor" className="text-[10px] font-semibold text-zinc-400 dark:text-zinc-400" textAnchor="end">70</text>
