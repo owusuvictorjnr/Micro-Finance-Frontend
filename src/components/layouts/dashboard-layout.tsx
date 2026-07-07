@@ -29,12 +29,10 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
   }, []);
 
   const toggleTheme = () => {
-    setTheme((prev) => {
-      const next = prev === "light" ? "dark" : "light";
-      document.documentElement.classList.toggle("dark", next === "dark");
-      document.documentElement.classList.toggle("light", next === "light");
-      return next;
-    });
+    const next = theme === "light" ? "dark" : "light";
+    setTheme(next);
+    document.documentElement.classList.toggle("dark", next === "dark");
+    document.documentElement.classList.toggle("light", next === "light");
   };
 
   // Helper to toggle role for testing (since auth is mock)
