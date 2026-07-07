@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { fetchOverviewStats, fetchRecentApplications, approveApplicationApi } from "../api";
+import { fetchOverviewStats, fetchRecentApplications, approveApplicationApi } from "../services";
 
 export const useOverviewStatsQuery = () => {
   return useQuery({
