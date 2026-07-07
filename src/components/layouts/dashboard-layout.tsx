@@ -16,27 +16,23 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
 
   // Sync theme with document class list
   useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark") || 
-                   (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    const timer = setTimeout(() => {
-      setTheme(isDark ? "dark" : "light");
-    }, 0);
-    return () => clearTimeout(timer);
+    const root = document.documentElement;
+    const hasExplicitLight = root.classList.contains("light");
+    const hasExplicitDark = root.classList.contains("dark");
+    const prefersDark =
+      window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false;
+    const isDark = hasExplicitDark || (!hasExplicitLight && prefersDark);
+    root.classList.toggle("dark", isDark);
+    root.classList.toggle("light", !isDark);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTheme(isDark ? "dark" : "light");
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    const next = theme === "light" ? "dark" : "light";
+    setTheme(next);
+    document.documentElement.classList.toggle("dark", next === "dark");
+    document.documentElement.classList.toggle("light", next === "light");
   };
 
   // Helper to toggle role for testing (since auth is mock)

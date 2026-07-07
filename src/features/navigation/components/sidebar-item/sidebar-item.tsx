@@ -143,9 +143,10 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item, isCollapsed = false }) 
       className="relative w-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onFocus={() => setIsHovered(true)}
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      onFocusCapture={() => setIsHovered(true)}
+      onBlurCapture={(e) => {
+        const next = e.relatedTarget;
+        if (!(next instanceof Node) || !e.currentTarget.contains(next)) {
           setIsHovered(false);
         }
       }}

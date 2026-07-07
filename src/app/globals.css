@@ -7,6 +7,11 @@
   --foreground: #171717;
 }
 
+:root.light {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
 :root.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
@@ -19,7 +24,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
@@ -43,24 +48,24 @@ body {
 }
 
 /* Smooth theme transitions */
-body, 
-div, 
-header, 
-aside, 
-main, 
-nav, 
-button, 
-h1, h2, h3, h4, h5, h6, 
-p, 
-span, 
-text, 
-rect, 
-circle, 
-line, 
-path,
+body,
+header,
+aside,
+main,
+nav,
+button,
 a,
+h1, h2, h3, h4, h5, h6,
+p,
+span,
 svg {
-  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-property: background-color, border-color, color, box-shadow;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body, header, aside, main, nav, button, a, h1, h2, h3, h4, h5, h6, p, span, svg {
+    transition: none !important;
+  }
 }
