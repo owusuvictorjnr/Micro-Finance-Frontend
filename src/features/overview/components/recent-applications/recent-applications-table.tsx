@@ -194,15 +194,19 @@ export const RecentApplicationsTable: React.FC<RecentApplicationsTableProps> = (
                   <td className="py-4 pr-4 pl-2 text-right">
                     {statusUpper === "APPROVED" ? (
                       <button
-                        disabled={isMutating}
-                        className="rounded-lg bg-emerald-500 px-4 py-1.5 text-xs font-bold text-white hover:bg-emerald-600 transition-colors shadow-sm cursor-pointer border border-transparent disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
+                        type="button"
+                        disabled
+                        title="Disbursement is not implemented yet"
+                        className="rounded-lg bg-emerald-500 px-4 py-1.5 text-xs font-bold text-white transition-colors shadow-sm border border-transparent opacity-50 cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
                       >
                         Disburse
                       </button>
                     ) : statusUpper === "REJECTED" ? (
                       <button
-                        disabled={isMutating}
-                        className="rounded-lg border border-zinc-200/60 bg-zinc-800 px-4 py-1.5 text-xs font-bold text-white hover:bg-zinc-700 dark:border-zinc-800 dark:bg-[#1A2035] dark:hover:bg-[#252C48] transition-colors shadow-sm cursor-pointer disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
+                        type="button"
+                        disabled
+                        title="Details view is not implemented yet"
+                        className="rounded-lg border border-zinc-200/60 bg-zinc-800 px-4 py-1.5 text-xs font-bold text-white dark:border-zinc-800 dark:bg-[#1A2035] transition-colors shadow-sm border border-transparent opacity-50 cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
                       >
                         Details
                       </button>
