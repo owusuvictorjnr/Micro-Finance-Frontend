@@ -1,5 +1,6 @@
 import { RecentApplication } from "../types/overview.types";
 import { DEFAULT_AVATARS } from "../components/recent-applications/constants/urls";
+import { approveApplicationSchema } from "../schemas/overview.schema";
 
 export const fetchOverviewStats = async () => {
   await new Promise((resolve) => setTimeout(resolve, 200));
@@ -103,6 +104,10 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
 };
 
 export const approveApplicationApi = async (id: string): Promise<{ success: boolean; id: string }> => {
+  const result = approveApplicationSchema.safeParse(id);
+  if (!result.success) {
+    throw new Error(result.error.issues[0]?.message || "Invalid application ID format");
+  }
   await new Promise((resolve) => setTimeout(resolve, 300));
   return { success: true, id };
 };
