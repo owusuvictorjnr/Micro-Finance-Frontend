@@ -10,7 +10,7 @@ export const CollectionSummary: React.FC = () => {
         <h3 className="text-sm font-bold tracking-tight text-zinc-900 dark:text-white">
           Collection Summary
         </h3>
-        <button className="flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50/50 px-3 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-[#070B13]/90 dark:text-zinc-300 dark:hover:bg-[#0E1322] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]">
+        <button type="button" className="flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50/50 px-3 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-[#070B13]/90 dark:text-zinc-300 dark:hover:bg-[#0E1322] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]">
           This Week
           <ChevronDown className="h-3.5 w-3.5 text-zinc-500" />
         </button>
