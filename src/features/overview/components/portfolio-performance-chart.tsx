@@ -42,6 +42,7 @@ export const PortfolioPerformanceChart: React.FC<PortfolioPerformanceChartProps>
           {(["6M", "1Y", "All"] as PerformanceFilter[]).map((f) => (
             <button
               key={f}
+              type="button"
               onClick={() => setFilter(f)}
               className={`rounded-md px-3 py-1 text-[10px] font-semibold transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5F63F2] focus-visible:ring-offset-1 focus-visible:ring-offset-zinc-100 dark:focus-visible:ring-offset-[#151B2E] ${
                 filter === f
