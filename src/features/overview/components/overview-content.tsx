@@ -103,7 +103,7 @@ export const OverviewContent = () => {
   }
 
   return (
-    <div className="space-y-6 animate-fade-in select-none">
+    <div className="space-y-6 animate-fade-in">
       {/* Top Controls: Tabs and Filters */}
       <OverviewHeader activeTab={activeTab} setActiveTab={setActiveTab} />
 
