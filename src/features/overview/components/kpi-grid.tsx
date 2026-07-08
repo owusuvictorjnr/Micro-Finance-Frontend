@@ -53,7 +53,6 @@ export const KpiGrid: React.FC = () => {
                 alt="Avatar 1"
                 width={24}
                 height={24}
-                unoptimized
               />
               <Image
                 className="inline-block h-6 w-6 rounded-full object-cover ring-2 ring-white dark:ring-[#0E1322]"
@@ -61,7 +60,6 @@ export const KpiGrid: React.FC = () => {
                 alt="Avatar 2"
                 width={24}
                 height={24}
-                unoptimized
               />
               <Image
                 className="inline-block h-6 w-6 rounded-full object-cover ring-2 ring-white dark:ring-[#0E1322]"
@@ -69,7 +67,6 @@ export const KpiGrid: React.FC = () => {
                 alt="Avatar 3"
                 width={24}
                 height={24}
-                unoptimized
               />
             </div>
             <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">
