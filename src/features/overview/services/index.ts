@@ -1,10 +1,13 @@
 import { RecentApplication } from "../types/overview.types";
-import { DEFAULT_AVATARS } from "../components/recent-applications/constants/urls";
+import { DEFAULT_AVATARS } from "../constants/avatars";
 import { approveApplicationSchema } from "../schemas/overview.schema";
 
-export const fetchOverviewStats = async () => {
+// Clearly isolate mock functions for development and demo purposes.
+// Once production backend endpoints are ready, replace these with real fetch/axios API calls.
+
+export const mockFetchOverviewStats = async () => {
   if (process.env.NODE_ENV === "production") {
-    throw new Error("Production API endpoint not configured for fetchOverviewStats.");
+    console.warn("Using mockFetchOverviewStats in production environment.");
   }
   await new Promise((resolve) => setTimeout(resolve, 200));
   return {
@@ -23,9 +26,9 @@ export const fetchOverviewStats = async () => {
   };
 };
 
-export const fetchRecentApplications = async (): Promise<RecentApplication[]> => {
+export const mockFetchRecentApplications = async (): Promise<RecentApplication[]> => {
   if (process.env.NODE_ENV === "production") {
-    throw new Error("Production API endpoint not configured for fetchRecentApplications.");
+    console.warn("Using mockFetchRecentApplications in production environment.");
   }
   await new Promise((resolve) => setTimeout(resolve, 200));
   return [
@@ -109,9 +112,9 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
   ];
 };
 
-export const approveApplicationApi = async (id: string): Promise<{ success: boolean; id: string }> => {
+export const mockApproveApplicationApi = async (id: string): Promise<{ success: boolean; id: string }> => {
   if (process.env.NODE_ENV === "production") {
-    throw new Error("Production API endpoint not configured for approveApplicationApi.");
+    console.warn("Using mockApproveApplicationApi in production environment.");
   }
   const result = approveApplicationSchema.safeParse(id);
   if (!result.success) {
