@@ -1,4 +1,5 @@
 import { RecentApplication } from "../types/overview.types";
+import { DEFAULT_AVATARS } from "../components/recent-applications/constants/urls";
 
 export const fetchOverviewStats = async () => {
   await new Promise((resolve) => setTimeout(resolve, 200));
@@ -24,7 +25,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
     {
       id: "LN-2024-8847",
       borrower: "Sarah Johnson",
-      avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80",
+      avatarUrl: DEFAULT_AVATARS.sarah,
       amount: 15000,
       term: "24 months",
       type: "PERSONAL",
@@ -35,7 +36,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
     {
       id: "LN-2024-8846",
       borrower: "Michael Chen",
-      avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80",
+      avatarUrl: DEFAULT_AVATARS.michael,
       amount: 8500,
       term: "12 months",
       type: "BNPL",
@@ -46,7 +47,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
     {
       id: "LN-2024-8845",
       borrower: "Emily Davis",
-      avatarUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80",
+      avatarUrl: DEFAULT_AVATARS.emily,
       amount: 25000,
       term: "36 months",
       type: "BUSINESS",
@@ -57,7 +58,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
     {
       id: "LN-2024-8844",
       borrower: "James Wilson",
-      avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80",
+      avatarUrl: DEFAULT_AVATARS.james,
       amount: 5000,
       term: "6 months",
       type: "BNPL",
@@ -68,7 +69,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
     {
       id: "LN-2024-8843",
       borrower: "Sarah Johnson",
-      avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80",
+      avatarUrl: DEFAULT_AVATARS.sarah,
       amount: 15000,
       term: "24 months",
       type: "PERSONAL",
@@ -79,7 +80,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
     {
       id: "LN-2024-8842",
       borrower: "Michael Chen",
-      avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80",
+      avatarUrl: DEFAULT_AVATARS.michael,
       amount: 8500,
       term: "12 months",
       type: "BNPL",
@@ -90,7 +91,7 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
     {
       id: "LN-2024-8841",
       borrower: "Emily Davis",
-      avatarUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80",
+      avatarUrl: DEFAULT_AVATARS.emily,
       amount: 25000,
       term: "36 months",
       type: "BUSINESS",
