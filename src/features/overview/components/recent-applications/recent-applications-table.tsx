@@ -211,6 +211,7 @@ export const RecentApplicationsTable: React.FC<RecentApplicationsTableProps> = (
                       </button>
                     ) : (
                       <button
+                        type="button"
                         onClick={() => approveMutation.mutate(app.id)}
                         disabled={isMutating}
                         className="rounded-lg border border-zinc-200/60 bg-zinc-800 px-4 py-1.5 text-xs font-bold text-white hover:bg-zinc-700 dark:border-zinc-800 dark:bg-[#1A2035] dark:hover:bg-[#252C48] transition-colors shadow-sm cursor-pointer disabled:opacity-50 flex items-center justify-center gap-1 ml-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]"
