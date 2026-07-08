@@ -62,6 +62,11 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
         {/* Date Selector Dropdown */}
         <div className="relative" ref={timeRef}>
           <button
+            id="time-range-trigger"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded={isTimeDropdownOpen}
+            aria-controls="time-range-menu"
             onClick={() => setIsTimeDropdownOpen(!isTimeDropdownOpen)}
             className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-[0.97] select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]"
           >
@@ -71,10 +76,17 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
           </button>
 
           {isTimeDropdownOpen && (
-            <div className="absolute right-0 mt-1.5 w-44 rounded-xl border border-zinc-200/80 bg-white p-1 shadow-lg dark:border-zinc-800 dark:bg-[#0E1322] z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+            <div
+              id="time-range-menu"
+              role="menu"
+              aria-labelledby="time-range-trigger"
+              className="absolute right-0 mt-1.5 w-44 rounded-xl border border-zinc-200/80 bg-white p-1 shadow-lg dark:border-zinc-800 dark:bg-[#0E1322] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+            >
               {timeRangeOptions.map((option) => (
                 <button
                   key={option}
+                  type="button"
+                  role="menuitem"
                   onClick={() => {
                     setTimeRange(option);
                     setIsTimeDropdownOpen(false);
@@ -90,7 +102,10 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
         </div>
 
         {/* Filter Button */}
-        <button className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]">
+        <button
+          type="button"
+          className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]"
+        >
           <SlidersHorizontal className="h-4 w-4 text-zinc-400" />
           <span>Filters</span>
         </button>
@@ -98,6 +113,11 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
         {/* Export Dropdown */}
         <div className="relative" ref={exportRef}>
           <button
+            id="export-trigger"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded={isExportDropdownOpen}
+            aria-controls="export-menu"
             onClick={() => setIsExportDropdownOpen(!isExportDropdownOpen)}
             className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0E1322]/80 dark:text-zinc-200 dark:hover:bg-zinc-900/60 transition-all shadow-sm cursor-pointer active:scale-[0.97] select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19]"
           >
@@ -106,8 +126,15 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
           </button>
 
           {isExportDropdownOpen && (
-            <div className="absolute right-0 mt-1.5 w-48 rounded-xl border border-zinc-200/80 bg-white p-1 shadow-lg dark:border-zinc-800 dark:bg-[#0E1322] z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+            <div
+              id="export-menu"
+              role="menu"
+              aria-labelledby="export-trigger"
+              className="absolute right-0 mt-1.5 w-48 rounded-xl border border-zinc-200/80 bg-white p-1 shadow-lg dark:border-zinc-800 dark:bg-[#0E1322] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+            >
               <button
+                type="button"
+                role="menuitem"
                 onClick={() => setIsExportDropdownOpen(false)}
                 className="flex items-center gap-2.5 w-full text-left rounded-lg px-3.5 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/70 transition-colors cursor-pointer"
               >
@@ -115,6 +142,8 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
                 <span>Export to CSV (.csv)</span>
               </button>
               <button
+                type="button"
+                role="menuitem"
                 onClick={() => setIsExportDropdownOpen(false)}
                 className="flex items-center gap-2.5 w-full text-left rounded-lg px-3.5 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/70 transition-colors cursor-pointer"
               >
@@ -122,6 +151,8 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
                 <span>Export to PDF (.pdf)</span>
               </button>
               <button
+                type="button"
+                role="menuitem"
                 onClick={() => setIsExportDropdownOpen(false)}
                 className="flex items-center gap-2.5 w-full text-left rounded-lg px-3.5 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/70 transition-colors cursor-pointer"
               >
