@@ -4,21 +4,19 @@ import React from "react";
 import { useAuth } from "@/providers/auth-provider";
 import { Lock } from "lucide-react";
 import { useOverview } from "../hooks/use-overview";
-import {
-  OverviewHeader,
-  AiRiskAlert,
-  KpiGrid,
-  QuickIndicators,
-  PortfolioPerformanceChart,
-  LoanDistributionChart,
-  RecentApplications,
-  CreditScoring,
-  RiskAlerts,
-  QuickActions,
-  TodayActivity,
-  EmiCalendar,
-  CollectionSummary,
-} from ".";
+import { OverviewHeader } from "./overview-header";
+import { AiRiskAlert } from "./ai-risk-alert";
+import { KpiGrid } from "./kpi-grid";
+import { QuickIndicators } from "./quick-indicators";
+import { PortfolioPerformanceChart } from "./portfolio-performance-chart";
+import { LoanDistributionChart } from "./loan-distribution-chart";
+import { RecentApplications } from "./recent-applications";
+import { CreditScoring } from "./credit-scoring";
+import { RiskAlerts } from "./risk-alerts";
+import { QuickActions } from "./quick-actions";
+import { TodayActivity } from "./today-activity";
+import { EmiCalendar } from "./emi-calendar";
+import { CollectionSummary } from "./collection-summary";
 
 export const OverviewContent = () => {
   const { user, isLoading, login } = useAuth();
