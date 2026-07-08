@@ -46,7 +46,7 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
             onChange={(e) => setSearchQuery(e.target.value)}
             className="rounded-lg border border-zinc-200 bg-zinc-50/50 px-3 py-1.5 text-xs text-zinc-800 outline-none focus:border-[#5F63F2] focus:bg-white dark:border-zinc-800 dark:bg-[#0B0F19] dark:text-zinc-200 dark:focus:border-[#5F63F2] dark:focus:bg-[#0B0F19] transition-colors shadow-inner w-44"
           />
-          <button className="flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-[#0B0F19] dark:text-zinc-300 dark:hover:bg-zinc-800/60 transition-colors shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
+          <button type="button" className="flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-[#0B0F19] dark:text-zinc-300 dark:hover:bg-zinc-800/60 transition-colors shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
             <span>View All</span>
           </button>
         </div>
