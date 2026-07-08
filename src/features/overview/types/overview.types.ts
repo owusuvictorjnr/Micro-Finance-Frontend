@@ -6,7 +6,7 @@ export interface RecentApplication {
   id: string;
   borrower: string;
   avatarUrl?: string;
-  amount: string;
+  amount: number;
   term: string;
   type: string;
   aiScore: number;
