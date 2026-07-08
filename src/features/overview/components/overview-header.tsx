@@ -64,7 +64,7 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
           <button
             id="time-range-trigger"
             type="button"
-            aria-haspopup="menu"
+            aria-haspopup="true"
             aria-expanded={isTimeDropdownOpen}
             aria-controls="time-range-menu"
             onClick={() => setIsTimeDropdownOpen(!isTimeDropdownOpen)}
@@ -78,7 +78,6 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
           {isTimeDropdownOpen && (
             <div
               id="time-range-menu"
-              role="menu"
               aria-labelledby="time-range-trigger"
               className="absolute right-0 mt-1.5 w-44 rounded-xl border border-zinc-200/80 bg-white p-1 shadow-lg dark:border-zinc-800 dark:bg-[#0E1322] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
             >
@@ -86,7 +85,6 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
                 <button
                   key={option}
                   type="button"
-                  role="menuitem"
                   onClick={() => {
                     setTimeRange(option);
                     setIsTimeDropdownOpen(false);
@@ -115,7 +113,7 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
           <button
             id="export-trigger"
             type="button"
-            aria-haspopup="menu"
+            aria-haspopup="true"
             aria-expanded={isExportDropdownOpen}
             aria-controls="export-menu"
             onClick={() => setIsExportDropdownOpen(!isExportDropdownOpen)}
@@ -128,13 +126,11 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
           {isExportDropdownOpen && (
             <div
               id="export-menu"
-              role="menu"
               aria-labelledby="export-trigger"
               className="absolute right-0 mt-1.5 w-48 rounded-xl border border-zinc-200/80 bg-white p-1 shadow-lg dark:border-zinc-800 dark:bg-[#0E1322] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
             >
               <button
                 type="button"
-                role="menuitem"
                 onClick={() => setIsExportDropdownOpen(false)}
                 className="flex items-center gap-2.5 w-full text-left rounded-lg px-3.5 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/70 transition-colors cursor-pointer"
               >
@@ -143,7 +139,6 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
               </button>
               <button
                 type="button"
-                role="menuitem"
                 onClick={() => setIsExportDropdownOpen(false)}
                 className="flex items-center gap-2.5 w-full text-left rounded-lg px-3.5 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/70 transition-colors cursor-pointer"
               >
@@ -152,7 +147,6 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
               </button>
               <button
                 type="button"
-                role="menuitem"
                 onClick={() => setIsExportDropdownOpen(false)}
                 className="flex items-center gap-2.5 w-full text-left rounded-lg px-3.5 py-2.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900/70 transition-colors cursor-pointer"
               >
