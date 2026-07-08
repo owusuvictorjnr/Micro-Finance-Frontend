@@ -49,7 +49,7 @@ export const EmiCalendar: React.FC = () => {
         <h3 className="text-sm font-bold tracking-tight text-zinc-900 dark:text-white">
           EMI Calendar - November 2024
         </h3>
-        <button className="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-800/60 transition-all cursor-pointer">
+        <button type="button" className="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-800/60 transition-all cursor-pointer">
           View Full
         </button>
       </div>
@@ -88,7 +88,7 @@ export const EmiCalendar: React.FC = () => {
 
             return (
               <div key={idx} className="flex justify-center">
-                <button className={itemClass}>
+                <button type="button" className={itemClass}>
                   {c.day}
                 </button>
               </div>
