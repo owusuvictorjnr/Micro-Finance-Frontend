@@ -21,7 +21,7 @@ export const QuickActions: React.FC = () => {
 
       <div className="mt-5 grid grid-cols-3 grid-rows-2 gap-3 flex-1">
         {/* New Loan - Active/Highlighted */}
-        <button className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-[#5F63F2]/65 bg-[#0F1424] py-5 px-3 hover:bg-[#131B32] transition-all shadow-[0_0_12px_rgba(95,99,242,0.12)] ring-1 ring-[#5F63F2]/25 cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F1424]">
+        <button type="button" className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-[#5F63F2]/65 bg-[#0F1424] py-5 px-3 hover:bg-[#131B32] transition-all shadow-[0_0_12px_rgba(95,99,242,0.12)] ring-1 ring-[#5F63F2]/25 cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F1424]">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#5F63F2] text-white group-hover:scale-105 transition-transform">
             <NewLoanIcon />
           </div>
@@ -29,7 +29,7 @@ export const QuickActions: React.FC = () => {
         </button>
 
         {/* BNPL Plan */}
-        <button className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
+        <button type="button" className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-500 text-white group-hover:scale-105 transition-transform">
             <BnplPlanIcon />
           </div>
@@ -37,7 +37,7 @@ export const QuickActions: React.FC = () => {
         </button>
 
         {/* Collect EMI */}
-        <button className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
+        <button type="button" className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500 text-white group-hover:scale-105 transition-transform">
             <CollectEmiIcon />
           </div>
@@ -45,7 +45,7 @@ export const QuickActions: React.FC = () => {
         </button>
 
         {/* Add Borrower */}
-        <button className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
+        <button type="button" className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500 text-white group-hover:scale-105 transition-transform">
             <AddBorrowerIcon />
           </div>
@@ -53,7 +53,7 @@ export const QuickActions: React.FC = () => {
         </button>
 
         {/* Reports */}
-        <button className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
+        <button type="button" className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500 text-white group-hover:scale-105 transition-transform">
             <ReportsIcon />
           </div>
@@ -61,7 +61,7 @@ export const QuickActions: React.FC = () => {
         </button>
 
         {/* AI Analysis */}
-        <button className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
+        <button type="button" className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-50 dark:bg-[#070B13]/90 py-5 px-3 hover:bg-zinc-100 dark:hover:bg-[#0E1322] hover:border-zinc-200 dark:hover:border-zinc-800 transition-all cursor-pointer text-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0E1322]">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-rose-500 text-white group-hover:scale-105 transition-transform">
             <AiAnalysisIcon />
           </div>
