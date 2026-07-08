@@ -109,7 +109,6 @@ export const RecentApplicationsTable: React.FC<RecentApplicationsTableProps> = (
                             width={36}
                             height={36}
                             className="h-full w-full object-cover"
-                            unoptimized
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-zinc-100 text-sm font-bold text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
