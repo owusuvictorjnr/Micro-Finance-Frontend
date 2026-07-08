@@ -56,6 +56,7 @@ export const OverviewContent = () => {
           {process.env.NODE_ENV === "development" ? (
             <div className="mt-8 space-y-3">
               <button
+                type="button"
                 onClick={() => void login("admin")}
                 className="flex w-full items-center justify-between rounded-lg border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm font-semibold text-zinc-700 transition-all duration-200 hover:bg-zinc-100/80 hover:text-zinc-950 dark:border-zinc-800 dark:bg-[#151B2E] dark:text-zinc-300 dark:hover:bg-[#1C253B] dark:hover:text-white group text-left cursor-pointer"
               >
@@ -71,6 +72,7 @@ export const OverviewContent = () => {
               </button>
 
               <button
+                type="button"
                 onClick={() => void login("employee")}
                 className="flex w-full items-center justify-between rounded-lg border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm font-semibold text-zinc-700 transition-all duration-200 hover:bg-zinc-100/80 hover:text-zinc-950 dark:border-zinc-800 dark:bg-[#151B2E] dark:text-zinc-300 dark:hover:bg-[#1C253B] dark:hover:text-white group text-left cursor-pointer"
               >
