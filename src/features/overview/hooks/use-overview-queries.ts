@@ -2,6 +2,7 @@
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchOverviewStats, fetchRecentApplications, approveApplicationApi } from "../services";
+import type { RecentApplication } from "../types/overview.types";
 
 export const useOverviewStatsQuery = () => {
   return useQuery({
@@ -21,8 +22,12 @@ export const useApproveApplicationMutation = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: approveApplicationApi,
-    onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: ["recent-applications"] });
+    onSuccess: (_data, id) => {
+      queryClient.setQueryData(
+        ["recent-applications"],
+        (old: RecentApplication[] | undefined) =>
+          old?.map((app) => (app.id === id ? { ...app, status: "APPROVED" } : app))
+      );
     },
   });
 };
