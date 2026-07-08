@@ -3,6 +3,9 @@ import { DEFAULT_AVATARS } from "../components/recent-applications/constants/url
 import { approveApplicationSchema } from "../schemas/overview.schema";
 
 export const fetchOverviewStats = async () => {
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("Production API endpoint not configured for fetchOverviewStats.");
+  }
   await new Promise((resolve) => setTimeout(resolve, 200));
   return {
     kpis: {
@@ -21,6 +24,9 @@ export const fetchOverviewStats = async () => {
 };
 
 export const fetchRecentApplications = async (): Promise<RecentApplication[]> => {
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("Production API endpoint not configured for fetchRecentApplications.");
+  }
   await new Promise((resolve) => setTimeout(resolve, 200));
   return [
     {
@@ -104,6 +110,9 @@ export const fetchRecentApplications = async (): Promise<RecentApplication[]> =>
 };
 
 export const approveApplicationApi = async (id: string): Promise<{ success: boolean; id: string }> => {
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("Production API endpoint not configured for approveApplicationApi.");
+  }
   const result = approveApplicationSchema.safeParse(id);
   if (!result.success) {
     throw new Error(result.error.issues[0]?.message || "Invalid application ID format");
