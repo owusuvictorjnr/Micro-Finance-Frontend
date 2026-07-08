@@ -8,6 +8,7 @@ import { approveApplicationSchema } from "../schemas/overview.schema";
 export const mockFetchOverviewStats = async () => {
   if (process.env.NODE_ENV === "production") {
     console.warn("Using mockFetchOverviewStats in production environment.");
+    throw new Error("mockFetchOverviewStats must not be used in production.");
   }
   await new Promise((resolve) => setTimeout(resolve, 200));
   return {
@@ -29,6 +30,7 @@ export const mockFetchOverviewStats = async () => {
 export const mockFetchRecentApplications = async (): Promise<RecentApplication[]> => {
   if (process.env.NODE_ENV === "production") {
     console.warn("Using mockFetchRecentApplications in production environment.");
+    throw new Error("mockFetchRecentApplications must not be used in production.");
   }
   await new Promise((resolve) => setTimeout(resolve, 200));
   return [
@@ -115,6 +117,7 @@ export const mockFetchRecentApplications = async (): Promise<RecentApplication[]
 export const mockApproveApplicationApi = async (id: string): Promise<{ success: boolean; id: string }> => {
   if (process.env.NODE_ENV === "production") {
     console.warn("Using mockApproveApplicationApi in production environment.");
+    throw new Error("mockApproveApplicationApi must not be used in production.");
   }
   const result = approveApplicationSchema.safeParse(id);
   if (!result.success) {
