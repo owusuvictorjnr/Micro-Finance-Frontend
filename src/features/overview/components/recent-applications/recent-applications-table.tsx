@@ -15,11 +15,13 @@ import {
 interface RecentApplicationsTableProps {
   applications: RecentApplication[];
   isLoading: boolean;
+  isFiltered?: boolean;
 }
 
 export const RecentApplicationsTable: React.FC<RecentApplicationsTableProps> = ({
   applications,
   isLoading,
+  isFiltered = false,
 }) => {
   const approveMutation = useApproveApplicationMutation();
 
@@ -230,7 +232,9 @@ export const RecentApplicationsTable: React.FC<RecentApplicationsTableProps> = (
           ) : (
             <tr>
               <td colSpan={6} className="py-8 text-center text-zinc-400 font-bold">
-                No applications match your search.
+                {isFiltered
+                  ? "No applications match your search."
+                  : "No applications to display."}
               </td>
             </tr>
           )}
