@@ -70,7 +70,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
 
         {/* Dynamic page content */}
         <main className="flex-1 overflow-y-auto bg-zinc-50/50 p-6 md:p-8 dark:bg-zinc-950/30">
-          <div className="mx-auto max-w-5xl space-y-6">
+          <div className="mx-auto w-full space-y-6">
             {children}
           </div>
         </main>
