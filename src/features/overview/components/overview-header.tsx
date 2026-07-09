@@ -45,6 +45,7 @@ export const OverviewHeader: React.FC<OverviewHeaderProps> = ({
         {tabs.map((tab) => (
           <button
             key={tab}
+            type="button"
             onClick={() => setActiveTab(tab)}
             className={`rounded-lg px-4 py-2.5 text-xs font-semibold tracking-wide transition-all duration-200 active:scale-95 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0B0F19] ${
               activeTab === tab
