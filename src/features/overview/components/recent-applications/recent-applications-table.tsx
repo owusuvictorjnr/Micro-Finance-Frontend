@@ -143,7 +143,7 @@ export const RecentApplicationsTable: React.FC<RecentApplicationsTableProps> = (
                   {/* Type badge */}
                   <td className="py-4 px-2">
                     <span
-                      className={`inline-block rounded px-2.5 py-1 text-xs font-bold tracking-wide ${getTypeBadgeStyles(
+                      className={`inline-block w-20 text-center rounded py-1 text-xs font-bold tracking-wide ${getTypeBadgeStyles(
                         app.type
                       )}`}
                     >
