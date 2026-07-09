@@ -56,6 +56,7 @@ export const RecentApplications: React.FC<RecentApplicationsProps> = ({
       <RecentApplicationsTable
         applications={filteredApplications}
         isLoading={isLoading}
+        isFiltered={searchQuery !== ""}
       />
     </div>
   );
