@@ -8,6 +8,7 @@ export const useOverviewStatsQuery = () => {
   return useQuery({
     queryKey: ["overview-stats"],
     queryFn: mockFetchOverviewStats,
+    enabled: process.env.NODE_ENV !== "production",
   });
 };
 
@@ -15,6 +16,7 @@ export const useRecentApplicationsQuery = () => {
   return useQuery({
     queryKey: ["recent-applications"],
     queryFn: mockFetchRecentApplications,
+    enabled: process.env.NODE_ENV !== "production",
   });
 };
 
