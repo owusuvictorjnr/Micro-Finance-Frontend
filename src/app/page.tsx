@@ -1,13 +1,16 @@
 import { AuthProvider } from "@/providers/auth-provider";
+import { QueryProvider } from "@/providers/query-provider";
 import DashboardLayout from "@/components/layouts/dashboard-layout";
-import DashboardContent from "@/features/dashboard/components/dashboard-content";
+import { OverviewContent } from "@/features/overview/components";
 
 export default function Home() {
   return (
-    <AuthProvider>
-      <DashboardLayout>
-        <DashboardContent />
-      </DashboardLayout>
-    </AuthProvider>
+    <QueryProvider>
+      <AuthProvider>
+        <DashboardLayout>
+          <OverviewContent />
+        </DashboardLayout>
+      </AuthProvider>
+    </QueryProvider>
   );
 }
