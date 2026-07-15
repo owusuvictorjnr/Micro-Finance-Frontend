@@ -111,7 +111,23 @@ export const PerformanceContent: React.FC = () => {
   const donutSize = 180;
   const donutRadius = 56;
   const donutCircumference = 2 * Math.PI * donutRadius;
-  let donutOffset = 0;
+  const donutSegments = processingDistribution.reduce<
+    Array<{ label: string; color: string; dash: number; offset: number }>
+  >((segments, segment, index) => {
+    const dash = (segment.value / 100) * donutCircumference;
+    const offset = processingDistribution
+      .slice(0, index)
+      .reduce((sum, previous) => sum + (previous.value / 100) * donutCircumference, 0);
+
+    segments.push({
+      label: segment.label,
+      color: segment.color,
+      dash,
+      offset,
+    });
+
+    return segments;
+  }, []);
 
   return (
     <div className="space-y-6 text-white">
@@ -238,8 +254,7 @@ export const PerformanceContent: React.FC = () => {
           <div className="mt-5 flex items-center justify-center">
             <svg width={donutSize} height={donutSize} viewBox="0 0 180 180" className="overflow-visible">
               <circle cx="90" cy="90" r={donutRadius} fill="none" stroke="#1F2937" strokeWidth="20" />
-              {processingDistribution.map((segment) => {
-                const dash = (segment.value / 100) * donutCircumference;
+              {donutSegments.map((segment) => {
                 const circle = (
                   <circle
                     key={segment.label}
@@ -249,12 +264,11 @@ export const PerformanceContent: React.FC = () => {
                     fill="none"
                     stroke={segment.color}
                     strokeWidth="20"
-                    strokeDasharray={`${dash} ${donutCircumference - dash}`}
-                    strokeDashoffset={-donutOffset}
+                    strokeDasharray={`${segment.dash} ${donutCircumference - segment.dash}`}
+                    strokeDashoffset={-segment.offset}
                     transform="rotate(-90 90 90)"
                   />
                 );
-                donutOffset += dash;
                 return circle;
               })}
               <circle cx="90" cy="90" r="42" fill="#0B1020" />
