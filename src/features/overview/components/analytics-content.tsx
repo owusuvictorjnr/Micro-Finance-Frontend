@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import { AnalyticsDistributionProduct } from "./analytics-distribution-product";
 import { AnalyticsStatGrid } from "./analytics-stat-grid";
-import { AnalyticsTrendDemographics } from "./analytics-trend-demographics";
+import { AnalyticsTrendDemographics, type LoanTrendRange } from "./analytics-trend-demographics";
 
 export const AnalyticsContent: React.FC = () => {
-  const [loanTrendTime, setLoanTrendTime] = useState("Last 6 Months");
+  const [loanTrendTime, setLoanTrendTime] = useState<LoanTrendRange>("Last 6 Months");
   const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
   const [regionFilter, setRegionFilter] = useState<"All" | "Urban" | "Rural">("All");
 
