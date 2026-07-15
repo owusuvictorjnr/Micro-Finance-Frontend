@@ -13,3 +13,5 @@ export * from "./quick-actions/index";
 export * from "./emi-calendar/index";
 export * from "./today-activity/index";
 export * from "./collection-summary/index";
+export * from "./analytics-content";
+
