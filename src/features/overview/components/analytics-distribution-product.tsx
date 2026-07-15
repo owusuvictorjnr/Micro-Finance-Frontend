@@ -192,7 +192,9 @@ export const AnalyticsDistributionProduct: React.FC<AnalyticsDistributionProduct
           </div>
           <button
             type="button"
-            className="flex items-center gap-2 rounded-xl border border-zinc-700 bg-[#0E1324] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-900"
+            title="Export is not implemented yet"
+            disabled
+            className="flex items-center gap-2 rounded-xl border border-zinc-700 bg-[#0E1324] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-900 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-[#0E1324]"
           >
             <Download className="h-4 w-4" />
             Export Report
