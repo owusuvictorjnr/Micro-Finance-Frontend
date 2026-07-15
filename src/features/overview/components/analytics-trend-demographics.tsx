@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { ChevronDown, Download } from "lucide-react";
 import {
   createTrendPath,
@@ -43,6 +43,35 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
   setIsTimeDropdownOpen,
   setLoanTrendTime,
 }) => {
+  const timeDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseDown = (event: MouseEvent) => {
+      if (!isTimeDropdownOpen) {
+        return;
+      }
+
+      const target = event.target as Node | null;
+      if (target && timeDropdownRef.current && !timeDropdownRef.current.contains(target)) {
+        setIsTimeDropdownOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsTimeDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isTimeDropdownOpen, setIsTimeDropdownOpen]);
+
   const selectedTrendData =
     loanTrendTime === "Last 3 Months"
       ? trendData.slice(-3)
@@ -75,7 +104,7 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
             <h3 className="text-3xl leading-none font-semibold tracking-tight text-white">Loan Volume Trend</h3>
             <p className="mt-2 text-base text-zinc-300">Applications vs Approvals vs Disbursements</p>
           </div>
-          <div className="relative">
+          <div className="relative" ref={timeDropdownRef}>
             <button
               id="loan-trend-time-trigger"
               type="button"
@@ -265,7 +294,9 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
           <button
             type="button"
             aria-label="Download borrower demographics data"
-            className="rounded-xl border border-zinc-700 bg-black p-2 text-zinc-200 transition-colors hover:bg-zinc-900"
+            title="Download is not implemented yet"
+            disabled
+            className="rounded-xl border border-zinc-700 bg-black p-2 text-zinc-200 transition-colors hover:bg-zinc-900 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-black"
           >
             <Download className="h-4 w-4" />
           </button>
