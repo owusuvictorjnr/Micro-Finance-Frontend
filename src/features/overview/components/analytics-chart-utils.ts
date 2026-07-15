@@ -14,7 +14,13 @@ export const getTrendX = (
   chartWidth: number,
   paddingLeft: number,
   dataLength: number,
-) => paddingLeft + (index * chartWidth) / (dataLength - 1);
+) => {
+  if (dataLength <= 1) {
+    return paddingLeft;
+  }
+
+  return paddingLeft + (index * chartWidth) / (dataLength - 1);
+};
 
 export const getTrendY = (
   value: number,
@@ -35,9 +41,19 @@ export const createTrendPath = (
   minValue: number,
   maxValue: number,
 ) => {
+  if (data.length === 0) {
+    return "";
+  }
+
   const chartInnerWidth = metrics.width - metrics.paddingLeft - metrics.paddingRight;
   const chartInnerHeight = metrics.height - metrics.paddingTop - metrics.paddingBottom;
   const valueRange = maxValue - minValue;
+
+  if (data.length === 1) {
+    const x = getTrendX(0, chartInnerWidth, metrics.paddingLeft, 1);
+    const y = getTrendY(data[0]![key], metrics.height, metrics.paddingBottom, chartInnerHeight, minValue, valueRange);
+    return `M ${x},${y}`;
+  }
 
   const points = data.map((point, index) => ({
     x: getTrendX(index, chartInnerWidth, metrics.paddingLeft, data.length),
@@ -45,6 +61,7 @@ export const createTrendPath = (
   }));
 
   const slopes = points.map((point, index) => {
+
     if (index === 0) {
       return (points[1]!.y - point.y) / (points[1]!.x - point.x);
     }
