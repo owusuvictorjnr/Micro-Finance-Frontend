@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Star } from "lucide-react";
 
 type TeamFilter = "All Teams" | "Collections" | "Underwriting" | "Support";
@@ -134,6 +134,16 @@ const initials = (name: string) =>
     .toUpperCase();
 
 export const TeamPerformanceSection: React.FC = () => {
+  const [activeFilter, setActiveFilter] = useState<TeamFilter>("All Teams");
+
+  const visibleRows = useMemo(() => {
+    if (activeFilter === "All Teams") {
+      return teamRows;
+    }
+
+    return teamRows.filter((row) => row.team.includes(activeFilter));
+  }, [activeFilter]);
+
   return (
     <div className="space-y-6 text-white">
       <section className="rounded-2xl border border-zinc-800 bg-[#0B1020] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
@@ -144,12 +154,13 @@ export const TeamPerformanceSection: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {teamFilters.map((filter, index) => {
-              const isActive = index === 0;
+            {teamFilters.map((filter) => {
+              const isActive = activeFilter === filter;
               return (
                 <button
                   key={filter}
                   type="button"
+                  onClick={() => setActiveFilter(filter)}
                   className={`rounded-xl px-4 py-2 text-sm font-semibold transition-colors ${
                     isActive
                       ? "bg-[#6C63FF] text-white shadow-sm"
@@ -174,7 +185,7 @@ export const TeamPerformanceSection: React.FC = () => {
             <span className="text-center">Performance</span>
           </div>
 
-          {teamRows.map((row, index) => (
+          {visibleRows.length > 0 ? visibleRows.map((row, index) => (
             <div
               key={row.agent}
               className={`grid grid-cols-[minmax(220px,1.7fr)_minmax(150px,1fr)_repeat(5,minmax(110px,0.9fr))] items-center px-5 py-4 text-sm ${
@@ -182,7 +193,7 @@ export const TeamPerformanceSection: React.FC = () => {
               }`}
             >
               <div className="flex items-center gap-3">
-                <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${avatarGradients[index]}`}>
+                <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${avatarGradients[index % avatarGradients.length]}`}>
                   <span className="text-xs font-bold text-white">{initials(row.agent)}</span>
                 </div>
                 <div className="min-w-0">
@@ -206,9 +217,9 @@ export const TeamPerformanceSection: React.FC = () => {
               <div className="text-center text-lg font-semibold text-zinc-100">{row.amount}</div>
               <div
                 className={`text-center text-lg font-semibold ${
-                  row.successRate.includes("9")
+                  Number.parseFloat(row.successRate) >= 90
                     ? "text-emerald-400"
-                    : row.successRate.includes("8")
+                    : Number.parseFloat(row.successRate) >= 80
                       ? "text-amber-400"
                       : "text-red-400"
                 }`}
@@ -224,7 +235,11 @@ export const TeamPerformanceSection: React.FC = () => {
                 ))}
               </div>
             </div>
-          ))}
+          )) : (
+            <div className="px-5 py-10 text-center text-sm text-zinc-400">
+              No agents match this team filter.
+            </div>
+          )}
         </div>
       </section>
 
