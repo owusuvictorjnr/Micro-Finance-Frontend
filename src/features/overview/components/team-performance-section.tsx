@@ -160,6 +160,7 @@ export const TeamPerformanceSection: React.FC = () => {
                 <button
                   key={filter}
                   type="button"
+                  aria-pressed={isActive}
                   onClick={() => setActiveFilter(filter)}
                   className={`rounded-xl px-4 py-2 text-sm font-semibold transition-colors ${
                     isActive
@@ -229,6 +230,8 @@ export const TeamPerformanceSection: React.FC = () => {
               <div className="flex items-center justify-center gap-1.5 text-zinc-300">
                 {Array.from({ length: 3 }).map((_, starIndex) => (
                   <Star
+                    aria-hidden="true"
+                    focusable="false"
                     key={`${row.agent}-star-${starIndex}`}
                     className={`h-4 w-4 ${starIndex < row.stars ? "fill-current text-zinc-200" : "text-zinc-500"}`}
                   />

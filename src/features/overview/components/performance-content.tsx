@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { AlertTriangle, ChevronDown, Star, Target, ThumbsUp, Zap } from "lucide-react";
 import { TeamPerformanceSection } from "./team-performance-section";
 
@@ -111,23 +111,27 @@ export const PerformanceContent: React.FC = () => {
   const donutSize = 180;
   const donutRadius = 56;
   const donutCircumference = 2 * Math.PI * donutRadius;
-  const donutSegments = processingDistribution.reduce<
-    Array<{ label: string; color: string; dash: number; offset: number }>
-  >((segments, segment, index) => {
-    const dash = (segment.value / 100) * donutCircumference;
-    const offset = processingDistribution
-      .slice(0, index)
-      .reduce((sum, previous) => sum + (previous.value / 100) * donutCircumference, 0);
+  const donutSegments = useMemo(
+    () =>
+      processingDistribution.reduce<
+        Array<{ label: string; color: string; dash: number; offset: number }>
+      >((segments, segment, index) => {
+        const dash = (segment.value / 100) * donutCircumference;
+        const offset = processingDistribution
+          .slice(0, index)
+          .reduce((sum, previous) => sum + (previous.value / 100) * donutCircumference, 0);
 
-    segments.push({
-      label: segment.label,
-      color: segment.color,
-      dash,
-      offset,
-    });
+        segments.push({
+          label: segment.label,
+          color: segment.color,
+          dash,
+          offset,
+        });
 
-    return segments;
-  }, []);
+        return segments;
+      }, []),
+    [donutCircumference]
+  );
 
   return (
     <div className="space-y-6 text-white">
@@ -137,20 +141,16 @@ export const PerformanceContent: React.FC = () => {
             key={metric.title}
             className="rounded-2xl border border-zinc-800 bg-[#0B1020] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
           >
-            <div className="flex items-start justify-between">
-              <div className="space-y-7">
-                <h3 className="text-[11px] font-semibold text-zinc-400">{metric.title}</h3>
-                <div>
-                  <p className="text-2xl font-semibold tracking-tight text-white">{metric.value}</p>
-                  <p className={`mt-2 text-[11px] font-medium ${metric.trendTone === "success" ? "text-emerald-400" : "text-amber-400"}`}>
-                    {metric.trend}
-                  </p>
-                </div>
-              </div>
-
-              <div className={`flex h-9 w-9 items-center justify-center rounded-md ${metric.iconTone}`}>
+            <div className="flex min-h-34 flex-col items-center justify-center text-center">
+              <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${metric.iconTone}`}>
                 {metric.icon}
               </div>
+
+              <p className="mt-4 text-2xl font-semibold tracking-tight text-white">{metric.value}</p>
+              <h3 className="mt-1 text-[11px] font-semibold text-zinc-400">{metric.title}</h3>
+              <p className={`mt-2 text-[11px] font-medium ${metric.trendTone === "success" ? "text-emerald-400" : "text-amber-400"}`}>
+                {metric.trend}
+              </p>
             </div>
           </section>
         ))}
@@ -220,7 +220,7 @@ export const PerformanceContent: React.FC = () => {
               <button
                 id="processing-time-trigger"
                 type="button"
-                aria-haspopup="true"
+                aria-haspopup="menu"
                 aria-expanded={isRangeOpen}
                 aria-controls="processing-time-menu"
                 onClick={() => setIsRangeOpen((prev) => !prev)}
@@ -231,11 +231,18 @@ export const PerformanceContent: React.FC = () => {
               </button>
 
               {isRangeOpen && (
-                <div id="processing-time-menu" aria-labelledby="processing-time-trigger" className="absolute right-0 z-20 mt-2 w-44 rounded-xl border border-zinc-800 bg-[#0A0E1A] p-1 shadow-xl">
+                <div
+                  id="processing-time-menu"
+                  role="menu"
+                  aria-labelledby="processing-time-trigger"
+                  className="absolute right-0 z-20 mt-2 w-44 rounded-xl border border-zinc-800 bg-[#0A0E1A] p-1 shadow-xl"
+                >
                   {processingOptions.map((option) => (
                     <button
                       key={option}
                       type="button"
+                      role="menuitemradio"
+                      aria-checked={range === option}
                       onClick={() => {
                         setRange(option);
                         setIsRangeOpen(false);
