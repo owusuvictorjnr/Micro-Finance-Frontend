@@ -174,7 +174,7 @@ export const PerformanceContent: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-5 h-[320px] w-full">
+          <div className="mt-5 h-80 w-full">
             <svg viewBox="0 0 760 320" className="h-full w-full font-sans">
               {[85, 87, 89, 91, 93, 95, 97, 99, 101].map((value) => {
                 const y = 280 - ((value - 85) / 16) * 220;
@@ -220,7 +220,7 @@ export const PerformanceContent: React.FC = () => {
               <button
                 id="processing-time-trigger"
                 type="button"
-                aria-haspopup="menu"
+                aria-haspopup="true"
                 aria-expanded={isRangeOpen}
                 aria-controls="processing-time-menu"
                 onClick={() => setIsRangeOpen((prev) => !prev)}
@@ -231,12 +231,11 @@ export const PerformanceContent: React.FC = () => {
               </button>
 
               {isRangeOpen && (
-                <div id="processing-time-menu" role="menu" aria-labelledby="processing-time-trigger" className="absolute right-0 z-20 mt-2 w-44 rounded-xl border border-zinc-800 bg-[#0A0E1A] p-1 shadow-xl">
+                <div id="processing-time-menu" aria-labelledby="processing-time-trigger" className="absolute right-0 z-20 mt-2 w-44 rounded-xl border border-zinc-800 bg-[#0A0E1A] p-1 shadow-xl">
                   {processingOptions.map((option) => (
                     <button
                       key={option}
                       type="button"
-                      role="menuitem"
                       onClick={() => {
                         setRange(option);
                         setIsRangeOpen(false);
