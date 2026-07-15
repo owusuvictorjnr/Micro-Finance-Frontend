@@ -17,7 +17,6 @@ import { QuickActions } from "./quick-actions";
 import { TodayActivity } from "./today-activity";
 import { EmiCalendar } from "./emi-calendar";
 import { CollectionSummary } from "./collection-summary";
-import { AnalyticsContent } from "./analytics-content";
 
 export const OverviewContent = () => {
   const { user, isLoading, login } = useAuth();
@@ -108,81 +107,49 @@ export const OverviewContent = () => {
       {/* Top Controls: Tabs and Filters */}
       <OverviewHeader activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {activeTab === "Overview" && (
-        <>
-          {/* AI Risk Alert Banner */}
-          <AiRiskAlert isDismissed={isAlertDismissed} onDismiss={() => setIsAlertDismissed(true)} />
+      {/* AI Risk Alert Banner */}
+      <AiRiskAlert isDismissed={isAlertDismissed} onDismiss={() => setIsAlertDismissed(true)} />
 
-          {/* Row 1: KPI Stats Grid */}
-          <KpiGrid />
+      {/* Row 1: KPI Stats Grid */}
+      <KpiGrid />
 
-          {/* Secondary Quick Indicators Grid */}
-          <QuickIndicators />
+      {/* Secondary Quick Indicators Grid */}
+      <QuickIndicators />
 
-          {/* Row 2: Charts Area */}
-          <div className="grid gap-6 lg:grid-cols-3">
-            <PortfolioPerformanceChart filter={performanceFilter} setFilter={setPerformanceFilter} />
-            <LoanDistributionChart />
-          </div>
+      {/* Row 2: Charts Area */}
+      <div className="grid gap-6 lg:grid-cols-3">
+        <PortfolioPerformanceChart filter={performanceFilter} setFilter={setPerformanceFilter} />
+        <LoanDistributionChart />
+      </div>
 
-          {/* Row 3: Admin Review Table & Credit Metrics */}
-          <div className="grid gap-6 lg:grid-cols-3">
-            <RecentApplications searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-            <div className="space-y-6">
-              <CreditScoring />
-              <RiskAlerts />
-            </div>
-          </div>
-
-          {/* Row 4: Quick Actions & Today's Activity */}
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-2 h-full">
-              <QuickActions />
-            </div>
-            <div className="lg:col-span-1 h-full">
-              <TodayActivity />
-            </div>
-          </div>
-
-          {/* Row 5: EMI Calendar & Collection Summary */}
-          <div className="mt-6 grid gap-6 lg:grid-cols-2">
-            <div className="h-full">
-              <EmiCalendar />
-            </div>
-            <div className="h-full">
-              <CollectionSummary />
-            </div>
-          </div>
-        </>
-      )}
-
-      {activeTab === "Analytics" && <AnalyticsContent />}
-
-      {activeTab === "Performance" && (
+      {/* Row 3: Admin Review Table & Credit Metrics */}
+      <div className="grid gap-6 lg:grid-cols-3">
+        <RecentApplications searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <div className="space-y-6">
-          <div className="grid gap-6 lg:grid-cols-3">
-            <PortfolioPerformanceChart filter={performanceFilter} setFilter={setPerformanceFilter} />
-            <CollectionSummary />
-          </div>
-          <div className="grid gap-6 lg:grid-cols-1">
-            <EmiCalendar />
-          </div>
+          <CreditScoring />
+          <RiskAlerts />
         </div>
-      )}
+      </div>
 
-      {activeTab === "AI Insights" && (
-        <div className="space-y-6">
-          <AiRiskAlert isDismissed={isAlertDismissed} onDismiss={() => setIsAlertDismissed(true)} />
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-1">
-              <CreditScoring />
-            </div>
-            <div className="lg:col-span-2">
-              <RiskAlerts />
-            </div>
-          </div>
+      {/* Row 4: Quick Actions & Today's Activity */}
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2 h-full">
+          <QuickActions />
         </div>
-      )}
+        <div className="lg:col-span-1 h-full">
+          <TodayActivity />
+        </div>
+      </div>
+
+      {/* Row 5: EMI Calendar & Collection Summary */}
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <div className="h-full">
+          <EmiCalendar />
+        </div>
+        <div className="h-full">
+          <CollectionSummary />
+        </div>
+      </div>
     </div>
   );
 };
