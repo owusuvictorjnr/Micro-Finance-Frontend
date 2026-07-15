@@ -92,6 +92,7 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
             {isTimeDropdownOpen && (
               <div
                 id="loan-trend-time-menu"
+                role="menu"
                 aria-labelledby="loan-trend-time-trigger"
                 className="absolute right-0 z-20 mt-2 w-40 rounded-xl border border-zinc-700 bg-[#080d1a] p-1 shadow-xl"
               >
@@ -99,6 +100,7 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
                   <button
                     key={option}
                     type="button"
+                    role="menuitem"
                     onClick={() => {
                       setLoanTrendTime(option);
                       setIsTimeDropdownOpen(false);
@@ -158,15 +160,15 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
             })}
 
             <path
-              d={`${applicationsPath} L ${getTrendX(trendData.length - 1, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} L ${getTrendX(0, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} Z`}
+              d={`${applicationsPath} L ${getTrendX(selectedTrendData.length - 1, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} L ${getTrendX(0, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} Z`}
               fill="url(#analytics-app-gradient)"
             />
             <path
-              d={`${approvalsPath} L ${getTrendX(trendData.length - 1, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} L ${getTrendX(0, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} Z`}
+              d={`${approvalsPath} L ${getTrendX(selectedTrendData.length - 1, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} L ${getTrendX(0, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} Z`}
               fill="url(#analytics-approval-gradient)"
             />
             <path
-              d={`${disbursementsPath} L ${getTrendX(trendData.length - 1, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} L ${getTrendX(0, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} Z`}
+              d={`${disbursementsPath} L ${getTrendX(selectedTrendData.length - 1, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} L ${getTrendX(0, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)},${trendMetrics.height - trendMetrics.paddingBottom} Z`}
               fill="url(#analytics-disbursement-gradient)"
             />
 
