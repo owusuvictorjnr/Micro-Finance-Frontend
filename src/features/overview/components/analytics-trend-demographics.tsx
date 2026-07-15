@@ -10,6 +10,10 @@ import {
 } from "./analytics-chart-utils";
 import { demographicsData, trendData } from "./analytics-content.data";
 
+export type LoanTrendRange = "Last 3 Months" | "Last 6 Months" | "Last 12 Months";
+
+const loanTrendOptions: LoanTrendRange[] = ["Last 3 Months", "Last 6 Months", "Last 12 Months"];
+
 const trendMetrics: TrendChartMetrics = {
   width: 700,
   height: 320,
@@ -27,10 +31,10 @@ const demoPaddingTop = 16;
 const demoPaddingBottom = 34;
 
 interface AnalyticsTrendDemographicsProps {
-  loanTrendTime: string;
+  loanTrendTime: LoanTrendRange;
   isTimeDropdownOpen: boolean;
   setIsTimeDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setLoanTrendTime: React.Dispatch<React.SetStateAction<string>>;
+  setLoanTrendTime: React.Dispatch<React.SetStateAction<LoanTrendRange>>;
 }
 
 export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProps> = ({
@@ -39,15 +43,22 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
   setIsTimeDropdownOpen,
   setLoanTrendTime,
 }) => {
+  const selectedTrendData =
+    loanTrendTime === "Last 3 Months"
+      ? trendData.slice(-3)
+      : loanTrendTime === "Last 6 Months"
+        ? trendData.slice(-6)
+        : trendData;
+
   const chartInnerWidth = trendMetrics.width - trendMetrics.paddingLeft - trendMetrics.paddingRight;
   const chartInnerHeight = trendMetrics.height - trendMetrics.paddingTop - trendMetrics.paddingBottom;
   const yMax = 550;
   const yMin = 250;
   const yRange = yMax - yMin;
 
-  const applicationsPath = createTrendPath(trendData, "applications", trendMetrics, yMin, yMax);
-  const approvalsPath = createTrendPath(trendData, "approvals", trendMetrics, yMin, yMax);
-  const disbursementsPath = createTrendPath(trendData, "disbursements", trendMetrics, yMin, yMax);
+  const applicationsPath = createTrendPath(selectedTrendData, "applications", trendMetrics, yMin, yMax);
+  const approvalsPath = createTrendPath(selectedTrendData, "approvals", trendMetrics, yMin, yMax);
+  const disbursementsPath = createTrendPath(selectedTrendData, "disbursements", trendMetrics, yMin, yMax);
 
   const getDemoBarX = (index: number) => {
     const columnWidth = (demoWidth - demoPaddingLeft - demoPaddingRight) / demographicsData.length;
@@ -66,7 +77,11 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
           </div>
           <div className="relative">
             <button
+              id="loan-trend-time-trigger"
               type="button"
+              aria-haspopup="menu"
+              aria-expanded={isTimeDropdownOpen}
+              aria-controls="loan-trend-time-menu"
               onClick={() => setIsTimeDropdownOpen((prev) => !prev)}
               className="flex items-center gap-2 rounded-xl border border-zinc-700 bg-black px-4 py-2 text-xs font-medium text-white"
             >
@@ -75,8 +90,12 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
             </button>
 
             {isTimeDropdownOpen && (
-              <div className="absolute right-0 z-20 mt-2 w-40 rounded-xl border border-zinc-700 bg-[#080d1a] p-1 shadow-xl">
-                {["Last 3 Months", "Last 6 Months", "Last 12 Months"].map((option) => (
+              <div
+                id="loan-trend-time-menu"
+                aria-labelledby="loan-trend-time-trigger"
+                className="absolute right-0 z-20 mt-2 w-40 rounded-xl border border-zinc-700 bg-[#080d1a] p-1 shadow-xl"
+              >
+                {loanTrendOptions.map((option) => (
                   <button
                     key={option}
                     type="button"
@@ -155,10 +174,10 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
             <path d={approvalsPath} fill="none" stroke="#14B8A6" strokeWidth="2.5" />
             <path d={disbursementsPath} fill="none" stroke="#F59E0B" strokeWidth="2.5" />
 
-            {trendData.map((point, index) => (
+              {selectedTrendData.map((point, index) => (
               <g key={point.month}>
                 <circle
-                  cx={getTrendX(index, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)}
+                  cx={getTrendX(index, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)}
                   cy={getTrendY(
                     point.applications,
                     trendMetrics.height,
@@ -173,7 +192,7 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
                   strokeWidth="2"
                 />
                 <circle
-                  cx={getTrendX(index, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)}
+                  cx={getTrendX(index, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)}
                   cy={getTrendY(
                     point.approvals,
                     trendMetrics.height,
@@ -188,7 +207,7 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
                   strokeWidth="2"
                 />
                 <circle
-                  cx={getTrendX(index, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)}
+                  cx={getTrendX(index, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)}
                   cy={getTrendY(
                     point.disbursements,
                     trendMetrics.height,
@@ -205,10 +224,10 @@ export const AnalyticsTrendDemographics: React.FC<AnalyticsTrendDemographicsProp
               </g>
             ))}
 
-            {trendData.map((point, index) => (
+            {selectedTrendData.map((point, index) => (
               <text
                 key={`${point.month}-label`}
-                x={getTrendX(index, chartInnerWidth, trendMetrics.paddingLeft, trendData.length)}
+                x={getTrendX(index, chartInnerWidth, trendMetrics.paddingLeft, selectedTrendData.length)}
                 y={trendMetrics.height - trendMetrics.paddingBottom + 20}
                 fill="#94A3B8"
                 fontSize="12"
