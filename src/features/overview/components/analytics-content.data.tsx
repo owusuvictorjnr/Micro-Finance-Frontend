@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   BriefcaseBusiness,
@@ -54,11 +52,17 @@ export type LoanProductPoint = {
 };
 
 export const trendData: TrendPoint[] = [
-  { month: "Jun", applications: 320, approvals: 280, disbursements: 260 },
-  { month: "Jul", applications: 380, approvals: 340, disbursements: 320 },
-  { month: "Aug", applications: 350, approvals: 310, disbursements: 290 },
-  { month: "Sep", applications: 420, approvals: 380, disbursements: 360 },
-  { month: "Oct", applications: 480, approvals: 430, disbursements: 410 },
+  { month: "Dec", applications: 300, approvals: 260, disbursements: 240 },
+  { month: "Jan", applications: 310, approvals: 270, disbursements: 250 },
+  { month: "Feb", applications: 330, approvals: 290, disbursements: 270 },
+  { month: "Mar", applications: 340, approvals: 300, disbursements: 280 },
+  { month: "Apr", applications: 360, approvals: 320, disbursements: 300 },
+  { month: "May", applications: 370, approvals: 330, disbursements: 310 },
+  { month: "Jun", applications: 390, approvals: 350, disbursements: 330 },
+  { month: "Jul", applications: 410, approvals: 370, disbursements: 350 },
+  { month: "Aug", applications: 430, approvals: 390, disbursements: 370 },
+  { month: "Sep", applications: 450, approvals: 410, disbursements: 390 },
+  { month: "Oct", applications: 490, approvals: 440, disbursements: 420 },
   { month: "Nov", applications: 520, approvals: 470, disbursements: 450 },
 ];
 
